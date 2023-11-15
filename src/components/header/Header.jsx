@@ -5,7 +5,7 @@ export default function Header(){
     return(
         <header className="site-header">
             <div className="wrapp-nav">
-                    <img src="" alt="logo" className="logo"/>
+                    <img src="/images/logo.png" alt="logo" className="logo"/>
                     <nav className="site-navigation">
                         <ul>
                             <li><Link to='/'>HOME</Link></li>
