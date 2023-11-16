@@ -1,0 +1,201 @@
+#home{
+    margin: 0 auto;
+}
+.homeWrapp{
+    position: relative;
+    /* background-image: url('../images/home.png');
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    width: 100%; */
+    min-height: 90vh; 
+    display: flex;
+    justify-content: center;
+    padding-top: 10em;
+}
+.homeImg img{
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90vh;
+    /* filter: blur(2px);
+    -webkit-filter: blur(5px); */
+
+}
+.text{
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    backdrop-filter: blur(5px);
+    padding: 0 1em 0 1em;
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    height: 50vh;
+    text-align: center;
+    z-index: 1000;
+}
+
+.text h1{
+    padding: 1em 0 0.5em 0;
+    font-size: 4em;
+    color: gray;
+    text-shadow: 5px 5px white;
+}
+
+.text h3, .text p {
+    color: white;
+    font-style: italic;
+    font-size: 2em;
+}
+
+.text p:first-of-type{
+    margin-bottom: 1.5em;
+}
+
+.text .button p {
+    display: block;
+    background-color: rgba(255,202,145,1);
+    backdrop-filter: blur(5px);
+    padding: 1em;
+    border: 1px solid white;
+    border-radius: 16px;
+    width: 50%;
+    margin: 0 auto;
+}
+.text .button p a{
+    text-decoration: none;
+    font-style: normal;
+    color: white;
+}
+
+
+@keyframes kreep {
+    0% {-webkit-transform: scale(1.1,.9);
+        transform: scale(1.1,.9);}
+   50% { -webkit-transform: scale(.9,1.1) translateY(-.5rem)}
+   70% { -webkit-transform: scale(1);
+         transform: scale(1);}
+}
+
+.text .button p:hover{
+    animation: none;
+    background-color: red;
+    color: black
+}
+
+.text .button p {
+    animation: kreep 0.7s ease 2s infinite alternate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em
+}
+.text .button p img{
+    width: 1em;
+    color: white;
+}
+
+.whyChoise{
+    padding: 2em 7em 2em 7em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(254,242,222);
+    background: linear-gradient(0deg, rgba(254,242,222,1) 4%, rgba(244,213,148,1) 78%, rgba(255,202,145,1) 96%);
+}
+
+.whyChoise h3{
+    font-size: 3em;
+}
+
+
+.advantagesWrapp{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.9em;
+    justify-content: center;
+    align-items: center;
+    background: rgb(255,202,145);
+    background: linear-gradient(0deg, rgba(255,202,145,1) 20%, rgba(244,213,148,1) 50%, rgba(254,242,222,1) 87%);
+}
+.advantage{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    gap: 2em;
+}
+
+.textContent{
+    max-width: 50ch
+}
+
+.advantage h3{
+    font-size: 7em;
+    color: rgb(255, 64, 0);
+}
+
+.textContent h4{
+    padding: 0 0 0.2em 0;
+    font-size: 2em;
+}
+
+.textContent p{
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.join{
+    background: rgb(254,242,222);
+    background: linear-gradient(0deg, rgba(254,242,222,1) 15%, rgba(248,225,179,1) 36%, rgba(244,213,148,1) 64%, rgba(255,202,145,1) 90%);
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+}
+.media img{
+    width: 25em;
+    height: 25em;
+    padding: 2em;
+}
+
+.textJoin h3{
+    font-size: 3em;
+    padding: 0.5em;
+}
+
+.textJoin h4, .textJoin p{
+    text-align: center;
+    font-size: 1.8em;
+}
+.textJoin p{
+    margin-top: 1.5em;
+    background-color: orangered;
+    width: 30%;
+    margin: 0 auto;
+    padding: 0.5em 1em 0.5em 1em;
+    border: 1.5px solid black;
+    border-radius: 16px;
+}
+
+.textJoin p:first-of-type{
+    animation: kreep 0.7s ease 2s infinite alternate;
+    margin-top: 1em;
+}
+
+.textJoin p a{
+    text-decoration: none;
+    color: white;
+}
+
+.textJoin p:hover{
+    animation: none;
+    border: 1.5px solid white;
+    background-color: rgb(239, 125, 83);
+}
+
+.textJoin p:hover a{
+    color: black;
+}
+
+

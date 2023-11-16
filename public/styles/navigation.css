@@ -1,0 +1,33 @@
+.wrapp-nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(254,246,233,255);
+}
+
+.logo{
+    margin-left: 4em;
+    max-width: 5em;
+}
+
+.site-navigation{
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.site-navigation ul{
+    display: flex;
+    gap: 2em;
+}
+.site-navigation ul li:last-of-type{
+    margin-right: 4em;
+}
+
+.site-navigation ul li{
+    display: block;
+}
+
+.site-navigation ul li a{
+    text-decoration: none;
+    color: black;
+}
