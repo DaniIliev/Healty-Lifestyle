@@ -12,6 +12,7 @@
 .wrapper .fon {
     width: 18em;
     margin: 0 5em 0 5em;
+    animation: kreep 0.7s ease 2s infinite alternate;
 }
 .register{
     border: 1px solid black;
@@ -102,4 +103,12 @@ position: relative;
 }
 .alreadyRegistered a:hover{
     color: black;
+}
+
+@keyframes kreep {
+    0% {-webkit-transform: scale(1.1,.9);
+        transform: scale(1.1,.9);}
+   50% { -webkit-transform: scale(.9,1.1) translateY(-.5rem)}
+   70% { -webkit-transform: scale(1);
+         transform: scale(1);}
 }

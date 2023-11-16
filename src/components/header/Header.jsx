@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 export default function Header(){
-
+const navigation = useNavigate()
 
     return(
         <header className="site-header">
             <div className="wrapp-nav">
-                    <img src="/images/logo.png" alt="logo" className="logo"/>
+                    <img src="/images/logo.png" alt="logo" className="logo" />
                     <nav className="site-navigation">
                         <ul>
                             <li><Link to='/'>HOME</Link></li>

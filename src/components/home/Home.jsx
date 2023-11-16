@@ -82,7 +82,7 @@ export default function Home(){
                         <h4>Start your healthy lifestyle</h4>
                         <h4>Unleash Your Inner Chef!</h4>
                         <p>
-                            <Link>Create an account</Link>
+                            <Link to='/user/register'>Create an account</Link>
                             <img src="/images/icons/plus-solid.svg" alt="plus" />
                         </p>
                     </div>
