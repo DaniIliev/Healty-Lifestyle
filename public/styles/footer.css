@@ -1,0 +1,68 @@
+.footer{
+    background-color: rgba(254,246,233,255);
+    text-align: center;
+}
+
+.footerWrapp{
+    padding-top: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.healtyLifestyleFooter{
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 0.7em;
+}
+.site-navigation-footer{
+    display: flex;
+    align-items: center;
+    margin-left: 4em;
+}
+
+
+.site-navigation-footer ul li{
+    display: block;
+}
+
+.site-navigation-footer ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1em;
+    align-items: start;
+}
+
+.site-navigation-footer ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.contacts-footer h3{
+    font-size: 1.5em;
+    padding: 0 0 0.5em 0;
+}
+
+.contacts-footer p{
+    padding: 0 0 0.2em 0;
+}
+
+.icons h3 {
+    text-align: center;
+    font-size: 1.5em;
+    padding: 0 0 0.5em 0;
+}
+.medias img{
+    width: 2em;
+    margin-right: 0.7em;
+    height: auto;
+}
+.icons{
+    margin-right: 4em;
+}
+
+.footer p:last-of-type{
+    padding: 1em 0 1em 0;
+}
