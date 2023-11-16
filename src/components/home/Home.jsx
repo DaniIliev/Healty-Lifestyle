@@ -18,7 +18,8 @@ export default function Home(){
                     <div className='button'>
                         <p>
                             <Link to='/recipes'>Begint Your Colinary Journey</Link>
-                            <img src="/images/icons/computer-mouse.svg" alt="mouse" />
+                            {/* <img src="/images/icons/computer-mouse.svg" alt="mouse" /> */}
+                            <img src="/images/icons/plus.png" alt="" />
                         </p>
 
                     </div>
@@ -80,7 +81,10 @@ export default function Home(){
                         <h3>Hey you, join the Healthy Lifestyle team today</h3>
                         <h4>Start your healthy lifestyle</h4>
                         <h4>Unleash Your Inner Chef!</h4>
-                        <p><Link>Create an account</Link></p>
+                        <p>
+                            <Link>Create an account</Link>
+                            <img src="/images/icons/plus-solid.svg" alt="plus" />
+                        </p>
                     </div>
             </div>
         </section>

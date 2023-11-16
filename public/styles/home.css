@@ -198,4 +198,15 @@
     color: black;
 }
 
+.textJoin p:last-of-type{
+    display: flex;
+    gap: 0.1em;
+    text-align: center;
+    align-items: center;
+}
+.textJoin p:last-of-type img{
+    width: 1em;
+    height: 1em;
+}
+
 
