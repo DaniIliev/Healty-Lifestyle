@@ -9,7 +9,8 @@ const navigation = useNavigate()
                     <nav className="site-navigation">
                         <ul>
                             <li><Link to='/'>HOME</Link></li>
-                            <li><Link to='recipes'>RECIPES</Link></li>
+                            <li><Link to='/recipes'>RECIPES</Link></li>
+                            {/* <li><Link to='/create'>CREATE</Link></li> */}
                             <li><Link to='/user/login'>LOGIN</Link></li>
                             <li><Link to='/user/register'>SIGN UP</Link></li>
                         </ul>

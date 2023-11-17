@@ -1,7 +1,26 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 export default function Register(){
+    // podobrenie 
+    const [formValues,setFormValues] = useState({
+        email: '',
+        password: '',
+        rePassword: '',
+    })
 
+    const onHandleChange = (e) => {
+        setFormValues(state => ({
+            ...state,
+            [e.target.name]: e.target.value,
+        }))
+    }
+
+    const submitHandler = (e) => {
+        e.preventDefault()
+
+        console.log(formValues)
+    }
 
 
     return(
@@ -14,12 +33,12 @@ export default function Register(){
                     </div>
                     <h3>+ Sign up</h3>
             </div>
-        <form className="registerForm">
+        <form className="registerForm" onSubmit={submitHandler}>
             <div className="inputWrapper">
                 <label htmlFor="email">Email</label>
                 <div>
                     <img src="/images/icons/at-solid.svg"/>
-                    <input type="text" id="text" name="email" placeholder= "Type your email"/>
+                    <input type="text" id="text" name="email" placeholder= "Type your email" value={formValues.email} onChange={onHandleChange}/>
                 </div>
             </div>
 
@@ -27,16 +46,16 @@ export default function Register(){
                 <label htmlFor="email">Password</label>
                 <div>
                     <img src="/images/icons/lock-solid.svg" alt="lock" />
-                    <input type="password" id="text" name="password" placeholder="Type your password" />    
+                    <input type="password" id="text" name="password" placeholder="Type your password" value={formValues.password} onChange={onHandleChange} />    
                 </div>
-   
             </div>
+            
             
             <div className="inputWrapper">
                 <label htmlFor="email">Repeat password</label>
                 <div>
                     <img src="/images/icons/lock-solid.svg" alt="lock" />
-                    <input type="password" id="text" name="rePassword" placeholder="Repeat your password"/> 
+                    <input type="password" id="text" name="rePassword" placeholder="Repeat your password" value={formValues.rePassword} onChange={onHandleChange}/> 
                 </div>
             </div>
             <button type="submit">Sign Up</button>
