@@ -1,5 +1,7 @@
 .catalog{
     position: relative;
+    background: rgb(255,202,145);
+    background: linear-gradient(0deg, rgba(255,202,145,1) 20%, rgba(244,213,148,1) 50%, rgba(254,242,222,1) 87%);
 }
 .catalog h3:first-child{
     padding: 1em 0 1em 0;

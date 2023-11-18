@@ -1,8 +1,11 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import * as userService from '../../services/userService'
 
 export default function Register(){
     // podobrenie 
+    const navigation = useNavigate()
+    // const [user, setUser] = useState({})
     const [formValues,setFormValues] = useState({
         email: '',
         password: '',
@@ -18,8 +21,17 @@ export default function Register(){
 
     const submitHandler = (e) => {
         e.preventDefault()
-
-        console.log(formValues)
+        let user = {}
+        userService.register(formValues)
+                .then(responce => {
+                    user = {
+                        email: responce.email,
+                        userId: responce.localId
+                    }
+                    localStorage.setItem('user', JSON.stringify(user))
+                    navigation('/')
+                })
+                .catch(err => console.log(err))
     }
 
 
@@ -38,7 +50,7 @@ export default function Register(){
                 <label htmlFor="email">Email</label>
                 <div>
                     <img src="/images/icons/at-solid.svg"/>
-                    <input type="text" id="text" name="email" placeholder= "Type your email" value={formValues.email} onChange={onHandleChange}/>
+                    <input type="text" name="email" placeholder= "Type your email" value={formValues.email} onChange={onHandleChange}/>
                 </div>
             </div>
 
@@ -46,7 +58,7 @@ export default function Register(){
                 <label htmlFor="email">Password</label>
                 <div>
                     <img src="/images/icons/lock-solid.svg" alt="lock" />
-                    <input type="password" id="text" name="password" placeholder="Type your password" value={formValues.password} onChange={onHandleChange} />    
+                    <input type="password" name="password" placeholder="Type your password" value={formValues.password} onChange={onHandleChange} />    
                 </div>
             </div>
             
@@ -55,7 +67,7 @@ export default function Register(){
                 <label htmlFor="email">Repeat password</label>
                 <div>
                     <img src="/images/icons/lock-solid.svg" alt="lock" />
-                    <input type="password" id="text" name="rePassword" placeholder="Repeat your password" value={formValues.rePassword} onChange={onHandleChange}/> 
+                    <input type="password" name="rePassword" placeholder="Repeat your password" value={formValues.rePassword} onChange={onHandleChange}/> 
                 </div>
             </div>
             <button type="submit">Sign Up</button>

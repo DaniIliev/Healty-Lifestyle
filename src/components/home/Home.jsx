@@ -17,7 +17,7 @@ export default function Home(){
 
                     <div className='button'>
                         <p>
-                            <Link to='/recipes'>Begint Your Colinary Journey</Link>
+                            <Link to='/recipes/all'>Begint Your Colinary Journey</Link>
                             {/* <img src="/images/icons/computer-mouse.svg" alt="mouse" /> */}
                             <img src="/images/icons/plus.png" alt="" />
                         </p>

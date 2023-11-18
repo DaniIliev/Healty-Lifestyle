@@ -1,6 +1,7 @@
 import { useState } from "react"
 import * as recipeService from '../../services/recipeService'
 import { Form } from "react-router-dom"
+import { recipeType } from "../../utils/structureData"
 
 
 const initialFormValues = {
@@ -41,22 +42,13 @@ export default function CreatePost({
 
     const onCreateHandler = (e) => {
         e.preventDefault()
-        let type = ''
-        if(formValues.recipeType == 'breakfast'){
-            console.log(formValues.breakfast)
-            type = 'Breakfast';
-        }else if(formValues.recipeType == 'snacks'){
-            type = 'Snacks';
-        }else if(formValues.recipeType == 'lunchdinner'){
-            type = 'Lunch & Dinner'
-        }else if(formValues.recipeType == 'salats'){
-            type = 'Salats'
+        let type = recipeType(formValues)
+        const data = {
+            ...formValues,
+            comentars: [],
+            likes: [],
         }
-        else{
-            type = 'deserts';
-        }
-        console.log(type, formValues)
-        recipeService.createRecipe(type, formValues)
+        recipeService.createRecipe(type, data)
                 .then(() =>{
                     setFormValues(initialFormValues)
                     hide()

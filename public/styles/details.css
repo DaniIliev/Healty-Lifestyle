@@ -1,0 +1,143 @@
+.detailsPage{
+    /* display: flex;
+    align-items: center;
+    flex-direction: column; */
+    /* gap: 0.5em; */
+    /* margin-top: -7em; */
+}
+
+.like{
+    width: 3.5em;
+    margin-bottom: 0.8em;
+}
+
+
+.wrappImgIcon{
+    display: flex;
+    /* position: relative; */
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 21px;
+}
+
+
+.buttonInput{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.5em 0 0.5em;
+    width: 100%;
+}
+
+.send,
+.showComents{
+    padding: 0.8em;
+    border-radius: 0 4px 4px 0;
+    height: 100%;
+    width: 30%;
+    margin: 0;
+    border: 1px solid #ccc;
+
+}
+
+.showComents{
+    width: 50%;
+    margin: 0 auto 0.5em;
+    border-radius: 4px;
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+
+}
+
+.showComents img{
+    width: 1.5em;
+}
+
+
+.send:hover,
+.showComents:hover{
+    background-color: rgb(59, 82, 253);
+    color: white;
+}
+.imgCommentAreaWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    box-sizing: border-box;
+    height: 3em;
+    padding: 1em;
+
+  }
+
+.detailsPage h1{
+    padding: 0;
+    text-align: center;
+}
+
+.detailsImg{
+    border-radius:  21px 21px 0 0;
+    /* margin: 1em 0 1em 1em; */
+    width: 20em;
+    height: 15em;
+}
+
+.write-comment{
+    display: flex;
+    flex-direction: column;
+}
+
+.card-details{
+    border: 1px solid black;
+    border-radius: 16px;
+    padding: 2em;
+    width: 40%;
+}
+
+.card-details h3{
+    font-size: 1.5em;
+}
+
+.card-details{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.wrappDetails{
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    gap: 4em;
+    justify-content: center;
+}
+
+.table, th ,td{
+    text-align: center;
+    border: 1px solid greenyellow;
+}
+
+
+
+.comments-list{
+    display: flex;
+    margin: 1em auto;
+    align-items:center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+    padding: 1em;
+    border: 2px solid black;
+    width: 50%;
+}
+
+.comments-list .commmentContent{
+    width: 40%;
+    
+}

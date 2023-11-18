@@ -61,7 +61,7 @@
     border: 1px solid white;
     border-radius: 16px;
     width: 50%;
-    margin: 0 auto;
+    margin: 0 auto 1em;
 }
 .text .button p a{
     text-decoration: none;

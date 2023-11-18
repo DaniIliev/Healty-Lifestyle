@@ -1,22 +1,75 @@
+import { useEffect, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-export default function Header(){
-const navigation = useNavigate()
+import useClickOutside from '../../hooks/useClickOutside'
+import UserDropDown from "../dropdownMenu/RecipesDropDown"
 
+export default function Header(){
+    const navigation = useNavigate()
+    const [showUserDropDown, setShowUserDropDown] = useState(false)
+    const [showRecipesDropDown, setShowRecipesDropDown] = useState(false)
+
+const showUserDropDownHandler = () => {
+    if(showRecipesDropDown == true){
+        setShowRecipesDropDown(false)
+    }
+    setShowUserDropDown(state => !state)
+}
+const showRecipesTypeDropDownHandler = () => {
+    if(showUserDropDown == true){
+        setShowUserDropDown(false)
+    }
+    setShowRecipesDropDown(state => !state)
+}
+
+const hide = () => {
+    setShowUserDropDown(false)
+    setShowRecipesDropDown(false)
+}
+
+// let domNodeRecipes = useClickOutside(hide)
+// const logout = () => {
+
+//     console.log(logout)
+// }
     return(
         <header className="site-header">
             <div className="wrapp-nav">
                     <img src="/images/logo.png" alt="logo" className="logo" />
                     <nav className="site-navigation">
-                        <ul>
+                        <ul className="site-navigation-ul">
                             <li><Link to='/'>HOME</Link></li>
-                            <li><Link to='/recipes'>RECIPES</Link></li>
+                            <li  onClick={showRecipesTypeDropDownHandler}>
+                                <Link>RECIPES</Link>
+                                {showRecipesDropDown && 
+                                    <ul className="recipesDropDown">
+                                        <li><Link to={'/recipes/all'} onClick={hide}>All recipes types</Link></li>
+                                        <li><Link to={'/recipes/breakfast'} onClick={hide}>Breakfast</Link></li>
+                                        <li><Link to={'/recipes/lunch&dinner'} onClick={hide}>Lunch & Dinner</Link></li>
+                                        <li><Link to={'/recipes/salats'}onClick={hide}>Salats</Link></li>
+                                        <li><Link to={'/recipes/dessert'} onClick={hide}>Deserts</Link></li>
+                                        <li><Link to={'recipes/snacks'} onClick={hide}>Snacks</Link></li>
+                                    </ul>
+                                    } 
+                            </li>
+
+             
+
                             {/* <li><Link to='/create'>CREATE</Link></li> */}
-                            <li><Link to='/user/login'>LOGIN</Link></li>
-                            <li><Link to='/user/register'>SIGN UP</Link></li>
+
+                            {/* if !user */}
+                            {/* <li><Link to='/user/login'>LOGIN</Link></li>
+                            <li><Link to='/user/register'>SIGN UP</Link></li> */}
+                            {/* {} ref={domNodeUser} */}
+                            <UserDropDown 
+                            hide={hide} 
+                            showUserDropDownHandler={showUserDropDownHandler} 
+                            showUserDropDown={showUserDropDown} />
                         </ul>
                     </nav>
             </div>
 
+
+                       
         </header>
     )
 }

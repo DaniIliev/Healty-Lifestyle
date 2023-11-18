@@ -19,7 +19,7 @@ export default function RecipeItem({
                 <h3>{titel}</h3>
                 <p>Calorien per 100 grams: {calorien} cal</p>
             </div>
-            <p className="buttonDetails"><Link>Details</Link></p>
+            <p className="buttonDetails"><Link to={`/recipes/${recipeType}/details/${id}`}>Details</Link></p>
         </div>
     )
 }

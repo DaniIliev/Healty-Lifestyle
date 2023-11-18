@@ -1,26 +1,28 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import CreatePost from "../create/CreatePost"
 import * as recipeService from '../../services/recipeService'
-import RecipeItem from "./RecipeItem"
+import RecipeItem from "../recipe/RecipeItem"
+import { responceDataStructure } from "../../utils/structureData"
+import SpinnerComponent from "../spinner/SpinnerComponent"
 
 export default function RecipesCatalog(){
     const [recipes, setRecipes] = useState([])
     const [showCreateModal, setShowCreateModal] = useState(false)
+    const [loading, setLoading] = useState(false)
+
+    const {type} = useParams()
 
     useEffect(() => {
-        recipeService.getRecipes()
+        setLoading(true)
+        recipeService.getRecipes(type)
                 .then(responce => {
-                    const result = []
-
-                    for (let i = 0; i < Object.values(responce).length; i++) {
-                        let recipe = Object.values(Object.values(responce)[i])[0]
-                        let id = Object.keys(Object.values(responce)[i])[0]
-                        result.push({...recipe, id: id})
-                    }
+                    let result = responceDataStructure(responce, type)
                     setRecipes(result)
+                    setLoading(false)
                 })
-    }, [])
+                .catch(err => console.log(err))
+    }, [type])
 
     const hideModal = () => {
         setShowCreateModal(false)
@@ -30,6 +32,11 @@ export default function RecipesCatalog(){
         setShowCreateModal(true)
     }
     return(
+        
+        <>
+        {loading == true ? 
+                <SpinnerComponent/>
+                        :
         <div className="catalog">
             <div className="content">
             <h3>Are you out of healthy food ideas? Here you can find many and varied recipes</h3>
@@ -46,6 +53,9 @@ export default function RecipesCatalog(){
                 {recipes.map(recipe => <RecipeItem key={recipe.id} {...recipe}/>)}
             </div>
         </div>
+        }
+        </>
+
 
     )
 }
