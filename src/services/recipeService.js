@@ -22,8 +22,8 @@ export const getRecipes = async (type) => {
         responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/recipes/${type}.json`)
     }
 
-    const result = await responce.json()
 
+    const result = await responce.json()
     return result
 }
 

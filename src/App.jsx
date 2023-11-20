@@ -8,6 +8,8 @@ import RecipesCatalog from './components/recipes/RecipesCatalog'
 import CreatePost from './components/create/CreatePost'
 import DetailsRecipe from './components/recipe/DetailsRecipe'
 import UserInfoComponent from './components/user/UserInfoConponent'
+import Login from './components/login/Login'
+import { AuthProvider } from './contexts/authContext'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,6 +17,8 @@ function App() {
   
   return (
 <>  
+<AuthProvider>
+
 <div className="main">
 <Header/>
 
@@ -22,14 +26,15 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='/create' element={<CreatePost/>}/>
       <Route path='/user/register' element={<Register/>}/> 
+      <Route path='/user/login' element={<Login/>}/>
       <Route path='/recipes/:type' element={<RecipesCatalog/>}/>
       <Route path = '/recipes/:type/details/:id' element={<DetailsRecipe/>}/>
-      <Route path='/user/info1' element={<UserInfoComponent/>}/>
+      <Route path='/user/info/:id' element={<UserInfoComponent/>}/>
 </Routes>
 
 <Footer/>
 </div>
-
+</AuthProvider>
 </>
   )
 }

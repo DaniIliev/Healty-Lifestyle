@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import * as recipeService from '../../services/recipeService'
 import * as commentService from '../../services/commentService'
 import * as likeService from '../../services/likeService'
 export default function DetailsRecipe(){
     const {type, id} = useParams()
+
     const [recipeDetails, setRecipeDetails] = useState([])
     const [showComents, setShowComents] = useState(false)
     const [coment, setComent] = useState({

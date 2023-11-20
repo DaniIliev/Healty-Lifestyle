@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import useClickOutside from '../../hooks/useClickOutside'
 import UserDropDown from "../dropdownMenu/RecipesDropDown"
+import { AuthContext } from "../../contexts/authContext"
 
 export default function Header(){
-    const navigation = useNavigate()
     const [showUserDropDown, setShowUserDropDown] = useState(false)
     const [showRecipesDropDown, setShowRecipesDropDown] = useState(false)
+    const {isAuthenticated} = useContext(AuthContext)
+
 
 const showUserDropDownHandler = () => {
     if(showRecipesDropDown == true){
@@ -25,6 +27,8 @@ const hide = () => {
     setShowUserDropDown(false)
     setShowRecipesDropDown(false)
 }
+
+
 
 // let domNodeRecipes = useClickOutside(hide)
 // const logout = () => {
@@ -51,19 +55,19 @@ const hide = () => {
                                     </ul>
                                     } 
                             </li>
-
-             
-
-                            {/* <li><Link to='/create'>CREATE</Link></li> */}
-
-                            {/* if !user */}
-                            {/* <li><Link to='/user/login'>LOGIN</Link></li>
-                            <li><Link to='/user/register'>SIGN UP</Link></li> */}
-                            {/* {} ref={domNodeUser} */}
-                            <UserDropDown 
-                            hide={hide} 
-                            showUserDropDownHandler={showUserDropDownHandler} 
-                            showUserDropDown={showUserDropDown} />
+                            {isAuthenticated == true ? 
+                                   <UserDropDown 
+                                   hide={hide} 
+                                   showUserDropDownHandler={showUserDropDownHandler} 
+                                   showUserDropDown={showUserDropDown} />
+                                :
+                                <>
+                                <li><Link to='/user/login'>LOGIN</Link></li>
+                                <li><Link to='/user/register'>SIGN UP</Link></li>
+                                </>
+                            }
+                 
+                     
                         </ul>
                     </nav>
             </div>

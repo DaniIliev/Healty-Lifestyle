@@ -1,14 +1,13 @@
 export const recipeType = (formValues) => {
   let type = "";
   if (formValues.recipeType == "breakfast") {
-    console.log(formValues.breakfast);
-    type = "Breakfast";
+    type = "breakfast";
   } else if (formValues.recipeType == "snacks") {
-    type = "Snacks";
+    type = "snacks";
   } else if (formValues.recipeType == "lunchdinner") {
-    type = "Lunch & Dinner";
+    type = "lunch&dinner";
   } else if (formValues.recipeType == "salats") {
-    type = "Salats";
+    type = "salats";
   } else {
     type = "deserts";
   }
@@ -33,8 +32,8 @@ export const responceDataStructure = (responce, type) => {
       const values = Object.values(responce)[0];
 
       result.push({
-        id: Object.keys(responce)[0],
-        ...Object.values(responce)[0],
+        id: Object.keys(responce)[i],
+        ...Object.values(responce)[i],
       });
     }
   }
