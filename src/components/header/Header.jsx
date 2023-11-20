@@ -30,17 +30,17 @@ const hide = () => {
 
 
 
-// let domNodeRecipes = useClickOutside(hide)
+let domNode = useClickOutside(hide)
 // const logout = () => {
 
-//     console.log(logout)
+//   console.log(logout)
 // }
     return(
         <header className="site-header">
             <div className="wrapp-nav">
                     <img src="/images/logo.png" alt="logo" className="logo" />
                     <nav className="site-navigation">
-                        <ul className="site-navigation-ul">
+                        <ul className="site-navigation-ul" ref={domNode}>
                             <li><Link to='/'>HOME</Link></li>
                             <li  onClick={showRecipesTypeDropDownHandler}>
                                 <Link>RECIPES</Link>
