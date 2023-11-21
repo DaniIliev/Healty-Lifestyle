@@ -3,19 +3,36 @@ import { useParams } from "react-router-dom"
 import * as recipeService from '../../services/recipeService'
 import * as commentService from '../../services/commentService'
 import * as likeService from '../../services/likeService'
+import { AuthContext } from "../../contexts/authContext"
+import Comment from "./Comment"
+
+
 export default function DetailsRecipe(){
+    const {userId, userEmail} = useContext(AuthContext)
     const {type, id} = useParams()
 
     const [recipeDetails, setRecipeDetails] = useState([])
     const [showComents, setShowComents] = useState(false)
+    const [isAlreadyLiked, setIsAlreadyLiked] = useState(false)
+    const [comments, setComents] = useState([])
+
     const [coment, setComent] = useState({
         comment: '',
-        name: 'Daniel',
+        name: userEmail
     })
 
     useEffect(() => {
         recipeService.getOne(type,id)
-            .then(data => setRecipeDetails(data))
+            .then(data => {
+                if(data.likes){
+                    let isLiked = Object.values(data?.likes).filter(id => id == userId);
+                    if(isLiked){
+                        setIsAlreadyLiked(state => !state)
+                    }
+                }
+                setRecipeDetails(data)
+
+            })
             .catch(err => console.log(err))
     }, [id])
 
@@ -27,7 +44,15 @@ export default function DetailsRecipe(){
     }
 
     const showCommentsHandler = () => {
-        setShowComents(state => !state)
+        console.log(showComents)
+        if(showComents){
+            return setShowComents(false)
+        }
+        commentService.get(id, type)
+            .then((responce) => {
+                setComents(responce)
+                setShowComents(true)
+            })
     }
 
 
@@ -35,17 +60,27 @@ export default function DetailsRecipe(){
         e.preventDefault()
 
         commentService.send(coment, id, type)
-            .then(responce => console.log(responce))
+            .then(() => setComent({
+                comment: '',
+                name: userEmail
+            }))
             .catch(err => console.log(err))
     }
 
     const likeHandler = (e) => {
         e.preventDefault()
-        // !!!!! 
-        const userId = '312421'
+
         likeService.like(type,id,userId)
-            .then(responce => console.log(responce))
+            .then(responce => setIsAlreadyLiked(true))
             .catch(err => console.log(err))
+    }
+
+    const unLikeHandler = (e) => {
+        e.preventDefault()
+
+        likeService.unLike(type,id,userId)
+                .then(() => setIsAlreadyLiked(false))
+                .catch(err => console.log(err))
     }
 
     return(
@@ -56,7 +91,8 @@ export default function DetailsRecipe(){
                     <div className="wrappImgIcon">
                         <img src={recipeDetails.imageUrl} alt="" className="detailsImg"/>
                     <div className="imgCommentAreaWrap">
-                        <img src="/images/icons/like.png" alt="likefsdafdsa" className="like" onClick={likeHandler}/>
+                        {isAlreadyLiked && <img src="/images/icons/unlike.png" alt="unlike" className="unLike" onClick={unLikeHandler}/>}
+                        {!isAlreadyLiked &&  <img src="/images/icons/like.png" alt="likefsdafdsa" className="like" onClick={likeHandler}/>}
                         <div className="comentars">
                             <div className="write-comment">
                             {/* <label htmlFor="write-coment">Write a comment here</label> */}
@@ -94,40 +130,14 @@ export default function DetailsRecipe(){
                 <textarea className='formInput' type="text" id="text" name="preparation" defaultValue={recipeDetails.preparation}/> 
             </div>
              </div>
-             {showComents &&     <div className="comments-list">
-                                    <div className="commmentContent">
-                                        <h6>Name: Daniel</h6>
-                                        <p>Mnogo adfasfgadgfdsfasfdas</p>
-                                    </div>
-                                    <div className="commmentContent">
-                                        <h6>Name: Daniel</h6>
-                                        <p>Mnogo adfasfgadgfdsfasfdas</p>
-                                    </div>
-                                    <div className="commmentContent">
-                                        <h6>Name: Daniel</h6>
-                                        <p>Mnogo adfasfgadgfdsfasfdas</p>
-                                    </div>
-                                    <div className="commmentContent">
-                                        <h6>Name: Daniel</h6>
-                                        <p>Mnogo adfasfgadgfdsfasfdas</p>
-                                    </div>
-                                    <div className="commmentContent">
-                                        <h6>Name: Daniel</h6>
-                                        <p>Mnogo adfasfgadgfdsfasfdas</p>
-                                    </div>
-                                    <div className="commmentContent">
-                                        <h6>Name: Daniel</h6>
-                                        <p>Mnogo adfasfgadgfdsfasfdas</p>
-                                    </div>
-                                    <div className="commmentContent">
-                                        <h6>Name: Daniel</h6>
-                                        <p>Mnogo adfasfgadgfdsfasfdas</p>
-                                    </div>
-                                    <div className="commmentContent">
-                                        <h6>Name: Daniel</h6>
-                                        <p>Mnogo adfasfgadgfdsfasfdas</p>
-                                    </div>
-                             </div>}
+             {showComents && (
+                    <div className="comments-list">
+                        {comments.map((comment, index) => <Comment key={index} {...comment}/>)}
+                  
+                    </div>
+             )
+             }
+
         </div>
         </>
     )

@@ -11,6 +11,7 @@ const initialFormValues = {
     hight: '',
     activeness: '',
     kilograms: '',
+    age: '',
 }
 
 
@@ -49,6 +50,10 @@ export default function UserFormModal(){
                 </div>
             </div>
             <div className="wrapp">
+                <label htmlFor="age">Age</label>
+                <input type="number" name="age" id="age" onChange={changeHandler} value={values.age}/>
+            </div>
+            <div className="wrapp">
                 <label htmlFor="hight">Height in centimeter</label>
                 <input type="number" name="hight" id="hight" onChange={changeHandler} value={values.hight}/>
             </div>
@@ -61,12 +66,12 @@ export default function UserFormModal(){
             <div className="wrapp">
                 <label htmlFor="activeness">Activeness</label>
                 <select name="activeness" id="activeness" onChange={changeHandler} value={values.activeness}>
-                    <option value="BMR">Basal Metabolic Rate</option>
-                    <option value="noPhysicalactivity">Little or no physical activity</option>
-                    <option value="1-3days">Light exercise (1-3 days a week)</option>
-                    <option value="3-5days">Moderate exercise (3-5 days a week)</option>
-                    <option value="6-7days">Heavy exercise (6-7 days a week)</option>
-                    <option value="twiceAday">Very heavy exercise (twice a day)</option>
+                    <option value="Basal Metabolic Rate">Basal Metabolic Rate</option>
+                    <option value="Little or no physical activity">Little or no physical activity</option>
+                    <option value="Light exercise (1-3 days a week)">Light exercise (1-3 days a week)</option>
+                    <option value="Moderate exercise (3-5 days a week)">Moderate exercise (3-5 days a week)</option>
+                    <option value="Heavy exercise (6-7 days a week)">Heavy exercise (6-7 days a week)</option>
+                    <option value="Very heavy exercise (twice a day)">Very heavy exercise (twice a day)</option>
                 </select>
             </div>
             <button type="submit">Submit</button>

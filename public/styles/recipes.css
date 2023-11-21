@@ -60,16 +60,63 @@
     padding: 2em;
     display: flex;
     align-items: center;
+    height: 100vh;
     gap: 1.5em;
     justify-content: space-around;
     flex-wrap: wrap;
 }
+.card a {
+    text-decoration: none;
+}
+.card-text p{
+    font-size: 1em;
+}
+.card-text h3{
+    font-size: 2em;
+}
+.card-text h4{
+    font-size: 1.5em;
+    /* background-color: red; */
+}
 
+.card-text p,
+.card-text h3,
+.card-text h4{
+    color: black;
+}
 .card{
     border: 2px solid black;
     width: 21%;
     border-radius: 12px;
+    height: 52%;
+    transition: width 0.3s, height 0.3s;
+
 }
+
+.card .info{
+    width: 2em;
+    display: none;
+}
+.card:hover .card-text .info{
+    padding-top: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin: 0 auto;
+}
+
+
+.card:hover{
+    width: 23%;
+    height: 60%;
+}
+
+.card:hover .info{
+    width: 2em;
+    display: block;
+}
+
 
 .card-media img{
     width: 100%;

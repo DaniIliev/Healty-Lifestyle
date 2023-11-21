@@ -6,15 +6,25 @@ import UserFormModal from "./UserFormModal"
 
 
 export default function UserInfoComponent(){
-    // const bmrMan = 66.473 + (13,7516 x тегло в кг) + (5,0033 x ръст в см) – (6,7550 x възраст в години);
-    // const bmrWomen = BMR = 655,095 + (9,5634 x тегло в кг) + (1,8496 x ръст в см) - (4,330 x възраст в години);
+    const [userDetails, setUserDetails] = useState([])
+
     const {id} = useParams()
     const [showEditUser, setShowEditUser] = useState(false)
 
+    let bmrMan;
+    let bmrWomen;
     useEffect(() => {
         userService.getDetails(id)
-            .then(result => console.log(result))
+            .then(result => {
+                setUserDetails(result)
+                bmrMan = 66.473 + (13.7516 * result[0].kilograms) + (5.0033 * result[0].hight) - (6.7550 * result[0].age);
+                bmrWomen = 655.095 + (9.5634 * result[0].kilograms) + (1.8496 * result[0].hight) - (4.330 * result[0].age);
+                console.log(bmrMan, bmrWomen)
+            })
     },[id])
+
+
+
 
     const showEditUserForm = () => {
         setShowEditUser(state => !state)

@@ -9,6 +9,20 @@
 .like{
     width: 3.5em;
     margin-bottom: 0.8em;
+    cursor: pointer;
+    transition: width 0.3s, height 0.3s;
+}
+
+.unLike{
+    width: 3.5em;
+    cursor: pointer;
+    margin: 0.5em 0 0.5em 0;
+    transition: width 0.3s, height 0.3s;
+}
+.like:hover,
+.unLike:hover{
+    width: 4em;
+    height: auto;
 }
 
 

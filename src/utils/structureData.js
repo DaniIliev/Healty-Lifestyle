@@ -16,14 +16,24 @@ export const recipeType = (formValues) => {
 };
 
 export const responceDataStructure = (responce, type) => {
+  // console.log(responce, type)
+  // console.log(Object.values(responce))
+  // console.log(Object.values(Object.values(responce)[1]))
   let result = [];
+  let id;
+  let recipe;
   if (type == "all") {
     for (let i = 0; i < Object.values(responce).length; i++) {
-      let recipe = Object.values(Object.values(responce)[i])[0];
+      for(let j = 0; j < Object.keys(Object.values(responce)[i]).length; j++ ){
 
-      let id = Object.keys(Object.values(responce)[i])[0];
+        id = (Object.keys(Object.values(responce)[i])[j])
+        recipe = (Object.values(Object.values(responce)[i])[j])
 
-      result.push({ ...recipe, id: id });
+        result.push({ ...recipe, id: id });
+      }
+      // let recipe = Object.values(Object.values(responce)[i])[0];
+      // console.log(Object.values(Object.values(responce)[i]))
+      // let id = Object.keys(Object.values(responce)[i])[0];
     }
   } else {
     for (let i = 0; i < Object.values(responce).length; i++) {
@@ -37,6 +47,6 @@ export const responceDataStructure = (responce, type) => {
       });
     }
   }
-
+  console.log(result)
   return result;
 };
