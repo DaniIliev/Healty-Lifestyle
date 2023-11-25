@@ -1,9 +1,11 @@
 .detailsPage{
-    /* display: flex;
-    align-items: center;
-    flex-direction: column; */
-    /* gap: 0.5em; */
-    /* margin-top: -7em; */
+ background-image: url('../images/detailsBackground.png');
+ background-repeat: no-repeat;
+ background-size: cover;
+ min-height: 80vh;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
 }
 
 .like{
@@ -122,6 +124,8 @@
     display: flex;
     flex-direction: column;
     gap: 1em;
+    backdrop-filter: blur(10px);
+
 }
 
 .wrappDetails{

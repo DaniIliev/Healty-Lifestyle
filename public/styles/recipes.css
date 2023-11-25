@@ -1,7 +1,14 @@
 .catalog{
-    position: relative;
-    background: rgb(255,202,145);
-    background: linear-gradient(0deg, rgba(255,202,145,1) 20%, rgba(244,213,148,1) 50%, rgba(254,242,222,1) 87%);
+    background-image: url('../images/background.png');
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    /* min-height: 150vh; */
+}
+.catalog img {
+    width: 100%;
+    height: auto;
 }
 .catalog h3:first-child{
     padding: 1em 0 1em 0;
@@ -15,7 +22,9 @@
     /* gap: 2em; */
     align-items: center;
     justify-content: center;
-    margin-top: 1em;
+    padding-top: 1em;
+    background: rgb(254,242,222);
+    background: linear-gradient(0deg, rgba(254,242,222,1) 15%, rgba(248,225,179,1) 36%, rgba(244,213,148,1) 64%,  rgba(254,242,222,1) 90%);
 }
 .catalog .idea {
     display: flex;
@@ -26,6 +35,9 @@
     border-radius: 12px;
     width: 30em;
     padding: 1em;
+    margin-bottom: 1em;
+    background: lightyellow;
+    backdrop-filter: blur(10px);
     
 }
 
@@ -57,10 +69,10 @@
     height: auto;
 }
 .cardsWrapper{
-    padding: 2em;
+    padding: 2.5em;
     display: flex;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     gap: 1.5em;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -90,6 +102,8 @@
     border-radius: 12px;
     height: 52%;
     transition: width 0.3s, height 0.3s;
+    background: rgb(255,202,145);
+    background: linear-gradient(0deg, rgba(255,202,145,1) 20%, rgba(244,213,148,1) 50%, rgba(254,242,222,1) 87%);
 
 }
 
@@ -108,8 +122,8 @@
 
 
 .card:hover{
-    width: 23%;
-    height: 60%;
+    width: 22%;
+    height: 53%;
 }
 
 .card:hover .info{
