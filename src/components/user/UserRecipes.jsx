@@ -18,14 +18,20 @@ export default function UserRecipes(){
 
     return(
         <>
-        <h2>My Recipes</h2>
-        <div className="cardsWrapper">
+        <div className="containerUserRecipes">
+        <div className="title">
+            {/* <h2>My Recipes</h2> */}
+            <img src="/images/my-recipes.png" alt="my-recipes" />
+        </div>
 
+        <div className="cardsWrapper user">
             {myRecipes && (
                 myRecipes.map(recipe => <RecipeItem key={recipe.id} {...recipe}/>)
                 )
             }
         </div>
+        </div>
+       
         </>
     )
 }

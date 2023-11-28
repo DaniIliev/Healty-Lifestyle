@@ -50,7 +50,7 @@ let domNode = useClickOutside(hide)
                                         <li><Link to={'/recipes/breakfast'} onClick={hide}>Breakfast</Link></li>
                                         <li><Link to={'/recipes/lunch&dinner'} onClick={hide}>Lunch & Dinner</Link></li>
                                         <li><Link to={'/recipes/salats'}onClick={hide}>Salats</Link></li>
-                                        <li><Link to={'/recipes/dessert'} onClick={hide}>Deserts</Link></li>
+                                        <li><Link to={'/recipes/deserts'} onClick={hide}>Deserts</Link></li>
                                         <li><Link to={'recipes/snacks'} onClick={hide}>Snacks</Link></li>
                                     </ul>
                                     } 

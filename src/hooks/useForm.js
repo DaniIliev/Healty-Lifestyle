@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function UseForm(initialValue, onSubmitHahdler){
+export default function useForm(initialValue, onSubmitHahdler){
     const [values, setValues] = useState(initialValue)
 
 
@@ -30,7 +30,7 @@ export default function UseForm(initialValue, onSubmitHahdler){
 
 
     const onSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault()  
         onSubmitHahdler(values)
         setValues(initialValue)
     }

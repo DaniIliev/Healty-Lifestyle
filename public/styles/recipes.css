@@ -1,12 +1,4 @@
-.catalog{
-    background-image: url('../images/background.png');
 
-    display: inline-block;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
-    /* min-height: 150vh; */
-}
 .catalog img {
     width: 100%;
     height: auto;
@@ -19,6 +11,7 @@
 }
 
 .content{
+    
     display: flex;
     /* gap: 2em; */
     align-items: center;
@@ -77,6 +70,8 @@
     gap: 1.5em;
     justify-content: space-around;
     flex-wrap: wrap;
+    background: rgb(241,242,245);
+    background: linear-gradient(0deg,rgba(254,246,233,255) 15%, rgba(241,242,245,1) 30%, rgba(207,224,245,1) 50%, rgba(255,234,245,1) 70%,  rgba(254,242,222,1) 90%);
 }
 .card a {
     text-decoration: none;
@@ -103,8 +98,8 @@
     border-radius: 12px;
     height: 52%;
     transition: width 0.3s, height 0.3s;
-    background: rgb(255,202,145);
-    background: linear-gradient(0deg, rgba(255,202,145,1) 20%, rgba(244,213,148,1) 50%, rgba(254,242,222,1) 87%);
+    background: rgb(241,242,245);
+    background: linear-gradient(0deg, rgba(241,242,245,1) 50%, rgba(255,234,245,1) 100%);
 
 }
 
@@ -135,6 +130,7 @@
 
 .card-media img{
     width: 100%;
+    height: 500px;
     max-height: 15em;
     overflow: hidden;
     border-radius: 12px 12px 0 0;
@@ -158,4 +154,11 @@
 
 .buttonDetails:hover{
     background-color: red;
+}
+
+
+h2{
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
 }

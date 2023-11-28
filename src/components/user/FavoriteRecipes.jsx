@@ -17,8 +17,13 @@ export default function FavoriteRecipes(){
 
     return(
         <>
-            <h2>My Favorite Recipes</h2>
-            <div className="cardsWrapper">
+            <div className="containerUserRecipes">
+            <div className="title2">
+                <img src="/images/book.png" alt="" className="love-recipes" />
+                <h2>My Favorite Recipes</h2>
+                <img src="/images/love-recipes.png" alt="" className="love-recipes"/>
+            </div>
+            <div className="cardsWrapper user">
                 {favoriteRecipes && (
                         favoriteRecipes.map(recipe => <RecipeItem key={recipe.id} {...recipe}/>)
                 )}
@@ -27,6 +32,8 @@ export default function FavoriteRecipes(){
                     <h3>I don't have Favorite Recipes :(</h3>
                 )}
             </div>
+            </div>
+            
         </>
     )
 }

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { AuthContext } from "../../contexts/authContext"
-import UseForm from "../../hooks/useForm"
+import useForm from "../../hooks/useForm"
 
 const initialFormValues = {
     email: '',
@@ -10,7 +10,7 @@ const initialFormValues = {
 }
 export default function Register(){
     const {onRegisterSubmit} = useContext(AuthContext) 
-    const {values, changeHandler, onSubmit} = UseForm(initialFormValues, onRegisterSubmit)
+    const {values, changeHandler, onSubmit} = useForm(initialFormValues, onRegisterSubmit)
 
 
     return(

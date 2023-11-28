@@ -27,6 +27,7 @@ export const login = async (user) => {
 
 
 export const postDetails = async (data) => {
+    console.log(data.ownerId)
     const responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/user.json`,{
         method: 'POST',
         headers:{

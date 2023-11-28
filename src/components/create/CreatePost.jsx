@@ -3,7 +3,7 @@ import * as recipeService from '../../services/recipeService'
 import { Form } from "react-router-dom"
 import { recipeType } from "../../utils/structureData"
 import {AuthContext} from '../../contexts/authContext'
-import UseForm from "../../hooks/useForm"
+import useForm from "../../hooks/useForm"
 import useClickOutside from "../../hooks/useClickOutside"
 
 const initialFormValues = {
@@ -40,7 +40,7 @@ export default function CreatePost({
                 .catch(err => console.log(err))
     }
 
-    const {values, changeHandler, onSubmit} = UseForm(initialFormValues, onCreateHandler)
+    const {values, changeHandler, onSubmit} = useForm(initialFormValues, onCreateHandler)
     const domNode = useClickOutside(hide)
 
 

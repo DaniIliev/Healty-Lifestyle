@@ -18,14 +18,13 @@ export default function DetailsRecipe(){
 
     const [coment, setComent] = useState({
         comment: '',
-        name: userEmail
+        name: userEmail,
+        ownerId: userId
     })
 
     useEffect(() => {
-        console.log(type)
         recipeService.getOne(type,id)
             .then(data => {
-                console.log(data)
                 if(data.likes){
                     let isLiked = Object.values(data?.likes).filter(id => id == userId);
                     if(isLiked){
@@ -107,7 +106,11 @@ export default function DetailsRecipe(){
                         </div>
                     </div>
                     <button className="showComents" onClick={showCommentsHandler}> Show all Coments <img src="/images/icons/comment.svg"/></button>
-
+                    {showComents && (
+                    <div className="comments-list">
+                        {comments.map((comment, index) => <Comment key={index} {...comment}/>)}
+                  
+                    </div>)}
                 </div>
 
             <div className="card-details">
@@ -133,13 +136,6 @@ export default function DetailsRecipe(){
                 <textarea className='formInput' type="text" id="text" name="preparation" defaultValue={recipeDetails.preparation}/> 
             </div>
              </div>
-             {showComents && (
-                    <div className="comments-list">
-                        {comments.map((comment, index) => <Comment key={index} {...comment}/>)}
-                  
-                    </div>
-             )
-             }
 
         </div>
         </>

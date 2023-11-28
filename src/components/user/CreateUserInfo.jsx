@@ -1,45 +1,37 @@
-import { useNavigate } from 'react-router-dom'
-import UseForm from '../../hooks/useForm'
+import { useNavigate, useParams } from "react-router-dom"
+import useForm from "../../hooks/useForm"
 import * as userService from '../../services/userService'
-import { useContext } from 'react'
-import { AuthContext } from '../../contexts/authContext'
+const initialFormValues = {
+    username: '',
+    man: '',
+    women: '',
+    hight: '',
+    activeness: '',
+    kilograms: '',
+    age: '',
+}
 
+export default function CreateUserInfo(){
 
-export default function UserFormModal(
-    username,
-    man,
-    women,
-    hight,
-    activeness,
-    kilograms,
-    age
-){
-    const initialFormValues = {
-        username: username,
-        man: man,
-        women: women,
-        hight: hight,
-        activeness: activeness,
-        kilograms: kilograms,
-        age: age,
-    }
-
-
+    const {id} = useParams()
     const navigate = useNavigate()
-    const {userId} = useContext(AuthContext)
 
-    
     const onSubmitHandler = () => {
-        userService.postDetails({...values, ownerId: userId})
-                .then(() => navigate('/'))
+        userService.postDetails({...values, ownerId: id})
+                .then(() => navigate(`/user/info/${id}`))
                 .catch((err) => console.log(err))
-    }
+    } 
+
+    const {values, changeHandler, onSubmit} = useForm(initialFormValues, onSubmitHandler)
+
 
     return(
-        <>
-        
-        <h1>Your detailed Information</h1>
-        <form className="userDetailsForm" onSubmit={onSubmitHandler}>
+        <div className="userInfo">
+            <div className="text">
+                <h2>Enter your information here</h2>
+                <p>After entering the information, our calculator will calculate the calorie expenditure</p>
+            </div>
+            <form className="userDetailsForm" onSubmit={onSubmit}>
             <div className="wrapp">
                  <label htmlFor="username">Username</label>
                  <input type="text" name="username" onChange={changeHandler} value={values.username}/>
@@ -84,6 +76,6 @@ export default function UserFormModal(
             </div>
             <button type="submit">Submit</button>
         </form>
-        </>
+        </div>
     )
 }

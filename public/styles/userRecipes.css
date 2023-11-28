@@ -1,0 +1,35 @@
+.title{
+    padding: 0.2em;
+}
+
+.title2{
+    display: flex;
+    margin: 0 ;
+    align-items: center;
+    justify-content: center;
+}
+.title2 h2{
+    margin: 0;
+}
+.user{
+    min-height: 70vh;
+}
+
+.title img{
+    width: 10%;
+    height: auto;
+    display: flex; 
+    margin: 0 auto;
+}
+
+.love-recipes{
+    width: 10%;
+    height: auto;
+    display: flex; 
+    margin: 0.5em 0 0.5em;
+}
+
+.containerUserRecipes{
+    background: rgb(241,242,245);
+    background: linear-gradient(0deg,rgba(254,246,233,255) 15%, rgba(241,242,245,1) 30%, rgba(207,224,245,1) 50%, rgba(255,234,245,1) 70%,  rgba(254,242,222,1) 90%);
+}
