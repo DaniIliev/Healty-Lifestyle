@@ -7,7 +7,6 @@ export default function RecipeItem({
     imageUrl,
 }){
 
-
     return(
         <div className="card">
             <Link to={`/recipes/${recipeType}/details/${id}`}>

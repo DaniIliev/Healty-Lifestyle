@@ -60,7 +60,7 @@ export default function CreatePost({
                 <select name="recipeType" id="recipetype" className="recypetype" onChange={changeHandler} value={values.recipeType}>
                     <option value="-">----</option>
                     <option value="breakfast">Breakfast</option>
-                    <option value="lunchdinner">Lunch & Dinner</option>
+                    <option value="lunch&dinner">Lunch & Dinner</option>
                     <option value="salats">Salats</option>
                     <option value="snacks">Snacks</option>
                     <option value="deserts">Deserts</option>

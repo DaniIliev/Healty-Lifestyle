@@ -10,6 +10,8 @@ import DetailsRecipe from './components/recipe/DetailsRecipe'
 import UserInfoComponent from './components/user/UserInfoConponent'
 import Login from './components/login/Login'
 import { AuthProvider } from './contexts/authContext'
+import UserRecipes from './components/user/UserRecipes'
+import FavoriteRecipes from './components/user/FavoriteRecipes'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -30,6 +32,8 @@ function App() {
       <Route path='/recipes/:type' element={<RecipesCatalog/>}/>
       <Route path = '/recipes/:type/details/:id' element={<DetailsRecipe/>}/>
       <Route path='/user/info/:id' element={<UserInfoComponent/>}/>
+      <Route path='/user/:id/recipes' element={<UserRecipes/>}/>
+      <Route path='/user/:id/favorite-recipes' element={<FavoriteRecipes/>}/> 
 </Routes>
 
 <Footer/>
@@ -40,3 +44,5 @@ function App() {
 }
 
 export default App
+
+

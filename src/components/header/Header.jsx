@@ -1,7 +1,7 @@
 import { useContext, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import useClickOutside from '../../hooks/useClickOutside'
-import UserDropDown from "../dropdownMenu/RecipesDropDown"
+import UserDropDown from "../dropdownMenu/UserDropdown"
 import { AuthContext } from "../../contexts/authContext"
 
 export default function Header(){
@@ -63,7 +63,7 @@ let domNode = useClickOutside(hide)
                                 :
                                 <>
                                 <li><Link to='/user/login'>LOGIN</Link></li>
-                                <li><Link to='/user/register'>SIGN UP</Link></li>
+                                <li className="last"><Link to='/user/register'>SIGN UP</Link></li>
                                 </>
                             }
                  

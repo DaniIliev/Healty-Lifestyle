@@ -8,7 +8,7 @@ export default function UserDropDown({
     showUserDropDownHandler,
     showUserDropDown
 }){
-    const {logout, userId} = useContext(AuthContext)
+    const {logout, userId, userEmail} = useContext(AuthContext)
     
 // let domNodeUser = useClickOutside(hide)
     const logoutHandler = () => {
@@ -21,7 +21,9 @@ export default function UserDropDown({
         <img src="/images/userIcon.png" alt="userIcon" className="userIcon" />
         {showUserDropDown && 
             <ul className="userDropDown">
-                <li><Link to={`/user/info/${userId}`}>Info about user</Link></li>
+                <li><Link to={`/user/info/${userId}`}>Info about {userEmail}</Link></li>
+                <li><Link to={`/user/${userId}/recipes`}>My recipes</Link></li>
+                <li><Link to={`/user/${userId}/favorite-recipes`}>Favorite recipes</Link></li>
                 <li><Link onClick={logoutHandler}>Logout</Link></li>
             </ul>
             } 

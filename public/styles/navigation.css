@@ -57,7 +57,8 @@
 }
 
 
-.site-navigation ul li:last-of-type{
+.dropHover,
+.last{
     margin-right: 4em;
 }
 

@@ -22,8 +22,10 @@ export default function DetailsRecipe(){
     })
 
     useEffect(() => {
+        console.log(type)
         recipeService.getOne(type,id)
             .then(data => {
+                console.log(data)
                 if(data.likes){
                     let isLiked = Object.values(data?.likes).filter(id => id == userId);
                     if(isLiked){
@@ -60,6 +62,7 @@ export default function DetailsRecipe(){
         e.preventDefault()
 
         commentService.send(coment, id, type)
+            console.log(type)
             .then(() => setComent({
                 comment: '',
                 name: userEmail

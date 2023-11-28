@@ -1,4 +1,4 @@
-
+import { responceDataStructure } from "../utils/structureData" 
 
 export const createRecipe = async (type, data) => {
     console.log(type)
@@ -34,4 +34,30 @@ export const getOne = async (type,id) => {
     const result = await responce.json()
 
     return result 
+}
+
+export const getUserRecipes = async(id) => {
+    const responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/recipes.json`)
+
+    const data = await responce.json()
+
+    const result = responceDataStructure(data, 'all')
+                    .filter(r => r?.ownerId == id)
+
+    return result
+}
+
+export const getFavoriteRecipes = async(id, userId) => {
+    const responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/recipes.json`)
+
+    const data = await responce.json()
+    
+    const result = responceDataStructure(data, 'all')
+                .filter(r => {
+                    if(r.likes != undefined){
+                        return Object.values(r?.likes)?.includes(id)
+                    }
+                })
+
+    return result
 }
