@@ -1,0 +1,18 @@
+.pagination{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    background-color:  rgba(254,246,233,255);
+}
+.paginationButton{
+    border-radius: 0px;
+    padding: 0.5em 1em;
+    margin: 0.4em;
+    box-shadow: 5px 2px 2px black;
+    background-color: rgb(242, 104, 104);
+    color: white;
+}
+.paginationButton:hover{
+    background-color: rgb(234, 26, 26);
+}

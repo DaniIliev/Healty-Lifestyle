@@ -38,11 +38,6 @@ export const AuthProvider = ({children}) => {
             console.log(err)
         }
     }
-    let isAuthenticated = true;
-
-    if(auth == "{}" || auth == {}) {
-        isAuthenticated = false
-    }
 
     const logout = () => {
         try{
@@ -60,7 +55,7 @@ export const AuthProvider = ({children}) => {
         onLoginSubmit,
         userEmail: auth.email,
         userId: auth.localId,
-        isAuthenticated,
+        isAuthenticated: !!auth.localId
     }
 
     return(

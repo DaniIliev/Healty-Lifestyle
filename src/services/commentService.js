@@ -20,7 +20,18 @@ export const get = async (id, type) => {
   const responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/recipes/${type}/${id}/comentars.json`)
 
   const result = await responce.json()
+  if(result){
+    return result
+  }else{
+    return undefined
+  }
+}
 
-  return Object.values(result)
+export const del = async (type, recipeId, commentId) => {
+    const responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/recipes/${type}/${recipeId}/comentars/${commentId}.json`,{
+      method:'DELETE'
+    })
 
+    const result = await responce.json()
+    return result;
 }

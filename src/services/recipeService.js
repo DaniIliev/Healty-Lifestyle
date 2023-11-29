@@ -9,9 +9,12 @@ export const createRecipe = async (type, data) => {
         },
         body: JSON.stringify(data)
     })
-    const result = responce.json()
-
-    return result
+    const result = await responce.json()
+    const newRecipe = {
+        ...data,
+        id: Object.values(result)
+    }
+    return newRecipe
 }
 
 export const getRecipes = async (type) => {
@@ -60,4 +63,12 @@ export const getFavoriteRecipes = async(id, userId) => {
                 })
 
     return result
+}
+
+export const del = async(type, id) => {
+    const responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/recipes/${type}/${id}.json`, {
+        method: 'DELETE',
+    })
+
+    const result = await responce.json()
 }

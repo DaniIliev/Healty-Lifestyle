@@ -177,9 +177,26 @@
     flex-direction: column;
     gap: 0.5em;
 }
-.edit{
+.edit,
+.delete{
+    cursor: pointer;
     width: 1em;
 }
-.delete{
 
+
+.editDeleteButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.editDeleteButtons button a{
+    font-size: 1.2em;
+    text-decoration: none;
+    color: black;
+}
+
+.editDeleteButtons button:hover{
+    background-color: #ccc;
+    color: white;
 }

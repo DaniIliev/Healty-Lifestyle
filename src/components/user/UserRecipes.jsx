@@ -1,37 +1,51 @@
 import { useEffect, useState } from "react";
 import RecipeItem from "../recipe/RecipeItem";
-import * as recipeService from '../../services/recipeService'
+import * as recipeService from "../../services/recipeService";
 import { useParams } from "react-router-dom";
+import SpinnerComponent from "../spinner/SpinnerComponent";
+import { Pagination } from "../pagination/Pagination";
 
-export default function UserRecipes(){
-    const [myRecipes, setMyRecipes] = useState([])
-    const {id} = useParams()
+export default function UserRecipes() {
+  const [myRecipes, setMyRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postsPerPage, setPostsPerPage] = useState(4)
+  const { id } = useParams();
 
-    useEffect(() => {
-        recipeService.getUserRecipes(id)
-            .then(responce => setMyRecipes(responce))
-            .catch(err => console.log(err))
-    }, [])
+  useEffect(() => {
+    setIsLoading(true);
+    recipeService
+      .getUserRecipes(id)
+      .then((responce) => {
+        setMyRecipes(responce);
+        setIsLoading(false)
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
 
-// console.log(...myre)
-
-    return(
-        <>
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = myRecipes.slice(firstPostIndex, lastPostIndex)
+  return (
+    <>
+      {isLoading && <SpinnerComponent />}
+      {!isLoading && (
         <div className="containerUserRecipes">
-        <div className="title">
+          <div className="title">
             {/* <h2>My Recipes</h2> */}
             <img src="/images/my-recipes.png" alt="my-recipes" />
-        </div>
+          </div>
 
-        <div className="cardsWrapper user">
-            {myRecipes && (
-                myRecipes.map(recipe => <RecipeItem key={recipe.id} {...recipe}/>)
-                )
-            }
+          <div className="cardsWrapper user">
+            {myRecipes &&
+              currentPosts.map((recipe) => (
+                <RecipeItem key={recipe.id} {...recipe} />
+              ))}
+          </div>
+          <Pagination totalPosts={myRecipes.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
         </div>
-        </div>
-       
-        </>
-    )
+      )}
+    </>
+  );
 }

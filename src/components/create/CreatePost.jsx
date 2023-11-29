@@ -21,7 +21,8 @@ const initialFormValues = {
     likes: [],
 }
 export default function CreatePost({
-    hide
+    hide,
+    setRecipes
 }){
     const {userId} = useContext(AuthContext)
 
@@ -34,7 +35,9 @@ export default function CreatePost({
             likes: [],
         }
         recipeService.createRecipe(type, data)
-                .then(() =>{
+                .then((newRecipe) =>{
+
+                    setRecipes(state => [...state,newRecipe])
                     hide()
                 })
                 .catch(err => console.log(err))

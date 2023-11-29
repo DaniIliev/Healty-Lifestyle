@@ -5,11 +5,14 @@ import * as recipeService from '../../services/recipeService'
 import RecipeItem from "../recipe/RecipeItem"
 import { responceDataStructure } from "../../utils/structureData"
 import SpinnerComponent from "../spinner/SpinnerComponent"
+import { Pagination } from "../pagination/Pagination"
 
 export default function RecipesCatalog(){
     const [recipes, setRecipes] = useState([])
     const [showCreateModal, setShowCreateModal] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [postsPerPage, setPostsPerPage] = useState(8)
 
     const {type} = useParams()
 
@@ -31,6 +34,10 @@ export default function RecipesCatalog(){
         e.preventDefault()  
         setShowCreateModal(true)
     }
+
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    const currentPosts = recipes.slice(firstPostIndex, lastPostIndex)
     return(
         
         <>
@@ -48,10 +55,12 @@ export default function RecipesCatalog(){
                 </div>
             </div>
             </div>
-            {showCreateModal && <CreatePost hide={hideModal}/>}
+            {showCreateModal && <CreatePost hide={hideModal} setRecipes={setRecipes}/>}
+            <img src="/images/filter.png" alt="filter" className="filter"/>
             <div className="cardsWrapper">
-                {recipes.map(recipe => <RecipeItem key={recipe.id} {...recipe}/>)}
+                {currentPosts.map(recipe => <RecipeItem key={recipe.id} {...recipe}/>)}
             </div>
+            <Pagination totalPosts={recipes.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} /> 
         </div>
         }
         </>

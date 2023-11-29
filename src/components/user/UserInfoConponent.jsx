@@ -41,6 +41,7 @@ export default function UserInfoComponent(){
                             <p><strong>Username:</strong> {userDetails[0]?.username}</p>
                             <p><strong>Gender:</strong> {userDetails[0]?.man ? 'Man' : 'Women'}</p>
                             <p><strong>Hight in centimeter:</strong> {userDetails[0]?.hight}</p>
+                            <p><strong>Age:</strong> {userDetails[0]?.age}</p>
                             <p><strong>Kilograms:</strong> {userDetails[0]?.kilograms}</p>
                             <p><strong>Activeness:</strong> {userDetails[0]?.activeness}</p>
                             <button onClick={showEditUserForm}>Edit</button>

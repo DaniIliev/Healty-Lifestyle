@@ -6,7 +6,7 @@ export const useLocalStorage = (key, initialValue) => {
         const persistedStateSerialized = localStorage.getItem(key)
         if(persistedStateSerialized){
         // saving the data when the browser is refreshed//
-            const persistedState = persistedStateSerialized;
+            const persistedState = JSON.parse(persistedStateSerialized);
             return persistedState
         }
         return initialValue;
