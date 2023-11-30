@@ -7,10 +7,7 @@ export default function AuthGuard(){
 
     const {isAuthenticated} = useContext(AuthContext)
 
-
-    console.log(isAuthenticated)
     if(!isAuthenticated){
-        console.log('navigate!!')
        return <Navigate to={'/user/login'}/>
     }
 

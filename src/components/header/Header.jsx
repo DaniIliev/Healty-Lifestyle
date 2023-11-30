@@ -38,7 +38,7 @@ let domNode = useClickOutside(hide)
     return(
         <header className="site-header">
             <div className="wrapp-nav">
-                    <img src="/images/logo.png" alt="logo" className="logo" />
+                    <Link to={'/'}><img src="/images/logo.png" alt="logo" className="logo" /></Link>
                     <nav className="site-navigation">
                         <ul className="site-navigation-ul" ref={domNode}>
                             <li><Link to='/'>HOME</Link></li>
