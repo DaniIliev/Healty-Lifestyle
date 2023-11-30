@@ -45,8 +45,8 @@ export default function Login(){
         <button type="submit">Login</button>
     </form>
     <div className="alreadyRegistered">
-        <p>Already registered?</p>
-        <Link>Login</Link>
+        <p>You don't have an account yet?</p>
+        <Link to={'/user/register'}>Register</Link>
     </div>
  </div>
  <img src="/images/vegetables.png" alt="vegetables" className="fon"/>

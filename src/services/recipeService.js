@@ -72,3 +72,13 @@ export const del = async(type, id) => {
 
     const result = await responce.json()
 }
+
+export const patch = async(type, id, data) => {
+    const responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/recipes/${type}/${id}.json`,{
+        method: 'PATCH',
+        headers:{
+            'Content-Type': 'application.json'
+        },
+        body: JSON.stringify(data)
+    })
+}

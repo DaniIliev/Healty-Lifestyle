@@ -69,8 +69,7 @@ export default function DetailsRecipe() {
   const sendComment = (e) => {
     e.preventDefault();
 
-    commentService
-      .send(coment, id, type)
+    commentService.send(coment, id, type)
       .then((responce) => {
         const newComment = {
           ...coment,
@@ -221,7 +220,7 @@ export default function DetailsRecipe() {
             {isOwner && (
               <div className="editDeleteButtons">
                 <button>
-                  <Link>Edit</Link>
+                  <Link to={`/recipes/${type}/edit/${id}`}>Edit</Link>
                 </button>
                 <button>
                   <Link onClick={deleteRecipeHandler}>Delete</Link>

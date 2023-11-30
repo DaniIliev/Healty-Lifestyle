@@ -57,7 +57,6 @@ let domNode = useClickOutside(hide)
                             </li>
                             {isAuthenticated == true ? 
                                    <UserDropDown 
-                                   hide={hide} 
                                    showUserDropDownHandler={showUserDropDownHandler} 
                                    showUserDropDown={showUserDropDown} />
                                 :

@@ -52,7 +52,7 @@ export default function Register(){
         </form>
         <div className="alreadyRegistered">
             <p>Already registered?</p>
-            <Link>Login</Link>
+            <Link to={'/user/login'}>Login</Link>
         </div>
      </div>
      <img src="/images/vegetables.png" alt="vegetables" className="fon"/>
