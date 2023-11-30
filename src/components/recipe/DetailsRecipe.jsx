@@ -12,8 +12,9 @@ import { deleteRecipe } from "./deleteRecipe";
 
 
 export default function DetailsRecipe() {
-  const { userId, userEmail } = useContext(AuthContext);
+  const { userId, username } = useContext(AuthContext);
   const { type, id } = useParams();
+  const [likeCount, setLikeCount] = useState(0)
   const navigate = useNavigate()
 
   const [recipeDetails, setRecipeDetails] = useState([]);
@@ -23,7 +24,7 @@ export default function DetailsRecipe() {
   const [comments, setComents] = useState([]);
   const [coment, setComent] = useState({
     comment: "",
-    name: userEmail,
+    name: username,
     ownerId: userId,
   });
 
@@ -32,8 +33,11 @@ export default function DetailsRecipe() {
     recipeService.getOne(type, id)
       .then((data) => {
         if (data.likes) {
+          let likeResult = responceDataStructure(data.likes, 'like')
+          setLikeCount(Object.values(data.likes).length)
           let isLiked = Object.values(data?.likes).filter((id) => id == userId);
-          if (isLiked) {
+          if (isLiked.length != 0) {
+            console.log(isLiked)
             setIsAlreadyLiked((state) => !state);
           }
         }
@@ -93,7 +97,11 @@ export default function DetailsRecipe() {
     e.preventDefault();
 
     likeService.like(type, id, userId)
-      .then((responce) => setIsAlreadyLiked(true))
+      .then((responce) => {
+        setIsAlreadyLiked(true)
+        likeService.getAll(type,id)
+                .then(res => setLikeCount(res))
+      })
       .catch((err) => console.log(err));
   };
 
@@ -101,7 +109,11 @@ export default function DetailsRecipe() {
     e.preventDefault();
 
     likeService.unLike(type, id, userId)
-      .then(() => setIsAlreadyLiked(false))
+      .then(() => {
+        setIsAlreadyLiked(false)
+        likeService.getAll(type,id)
+            .then(res => setLikeCount(res))
+      })
       .catch((err) => console.log(err));
   };
 
@@ -166,7 +178,6 @@ export default function DetailsRecipe() {
                 </div>
               </div>
               <button className="showComents" onClick={showCommentsHandler}>
-                {/* {" "} */}
                 {showComents ? "Hide all Coments" : "Show all Coments"}{" "}
                 <img src="/images/icons/comment.svg" />
               </button>
@@ -190,8 +201,13 @@ export default function DetailsRecipe() {
             </div>
 
             <div className="card-details">
+              <div className="wraph4h3p">
+              <div className="wraph4h3">
               <h4>{recipeDetails.recipeType}</h4>
               <h3>{recipeDetails.title}</h3>
+              </div>
+              <p><img src="/images/loveCount.png" alt="loveCount" className="loveCount"/>Count: {likeCount != 0 ? likeCount : '0 :('}</p>
+              </div>
               <p>Cooking time: {recipeDetails.cooking}</p>
               <p>Calorien per 100 grams:{recipeDetails.calorien} cal</p>
               <table className="table" name="table">

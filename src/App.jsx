@@ -14,6 +14,7 @@ import UserRecipes from './components/user/UserRecipes'
 import FavoriteRecipes from './components/user/FavoriteRecipes'
 import CreateUserInfo from './components/user/CreateUserInfo'
 import EditRecipe from './components/recipe/EditRecipe'
+import AuthGuard from './components/guards/AuthGuard'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,16 +29,18 @@ function App() {
 
 <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/create' element={<CreatePost/>}/>
+      <Route element={<AuthGuard/>}>
+            <Route path='/create' element={<CreatePost/>}/>
+            <Route path = '/recipes/:type/details/:id' element={<DetailsRecipe/>}/>
+            <Route path='/recipes/:type/edit/:id' element={<EditRecipe/>}/>
+            <Route path='/user/info/:id' element={<UserInfoComponent/>}/>
+            <Route path='/user/:id/recipes' element={<UserRecipes/>}/>
+            <Route path='/user/:id/favorite-recipes' element={<FavoriteRecipes/>}/> 
+            <Route path='/user/:id/createDetails' element={<CreateUserInfo/>} />
+      </Route> 
       <Route path='/user/register' element={<Register/>}/> 
-      <Route path='/user/login' element={<Login/>}/>
+      <Route path='/user/login' element={<Login/>}/> 
       <Route path='/recipes/:type' element={<RecipesCatalog/>}/>
-      <Route path = '/recipes/:type/details/:id' element={<DetailsRecipe/>}/>
-      <Route path='/recipes/:type/edit/:id' element={<EditRecipe/>}/>
-      <Route path='/user/info/:id' element={<UserInfoComponent/>}/>
-      <Route path='/user/:id/recipes' element={<UserRecipes/>}/>
-      <Route path='/user/:id/favorite-recipes' element={<FavoriteRecipes/>}/> 
-      <Route path='/user/:id/createDetails' element={<CreateUserInfo/>} />
 </Routes>
 
 <Footer/>

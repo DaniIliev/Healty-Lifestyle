@@ -200,3 +200,19 @@
     background-color: #ccc;
     color: white;
 }
+
+.loveCount{
+    width: 3em;
+}
+
+.wraph4h3p{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.wraph4h3p p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

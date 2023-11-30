@@ -49,12 +49,15 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    const reg = /@[a-z]+.[a-z]+/
+
     const contextValues = {
         onRegisterSubmit,
         logout,
         onLoginSubmit,
         userEmail: auth.email,
         userId: auth.localId,
+        username: auth.email?.replace(reg, ''),
         isAuthenticated: !!auth.localId
     }
 

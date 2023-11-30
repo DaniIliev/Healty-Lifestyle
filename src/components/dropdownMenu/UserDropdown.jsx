@@ -7,10 +7,9 @@ export default function UserDropDown({
     showUserDropDownHandler,
     showUserDropDown
 }){
-    const {logout, userId, userEmail} = useContext(AuthContext)
+    const {logout, userId, username} = useContext(AuthContext)
     
-    const reg = /@[a-z]+.[a-z]+/
-    const username = userEmail.replace(reg, '');
+
 
     const logoutHandler = () => {
         logout()

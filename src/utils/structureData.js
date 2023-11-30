@@ -31,7 +31,14 @@ export const responceDataStructure = (responce, type) => {
       }
 
     }
-  } else {
+  } else if(type == 'like'){
+    for(let i = 0; i < Object.keys(responce).length; i++){
+      let likeID = Object.keys(responce)[i]
+      let likedUserID = Object.values(responce)[i]
+      result.push({ likeId: likeID, likedUserID: likedUserID})
+    }
+  }
+  else {
     for (let i = 0; i < Object.values(responce).length; i++) {
       const id = Object.keys(responce)[0];
 
