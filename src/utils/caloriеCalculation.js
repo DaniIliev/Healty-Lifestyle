@@ -35,6 +35,5 @@ export default function calorienCalculation(data){
         'fat': fat,
         'carbs': carbs
     }
-    console.log(result)
     return result
 }

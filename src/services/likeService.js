@@ -7,8 +7,13 @@ export const like = async (type, postId, userId) => {
         body: JSON.stringify(userId)
       });
 
-      const result = responce.json()
-      return result
+      const result = await responce.json()
+      const newLike = {
+        likeId: result.name, 
+        likedUserID: userId
+      }
+
+        return newLike
 }
 
 
@@ -19,7 +24,7 @@ export const unLike = async (type, postId, userId) => {
 
       const result = await responce.json()
       console.log(result)
-      return result
+    //   return result
 }
 
 export const getAll = async (type, id) => {
@@ -30,8 +35,10 @@ export const getAll = async (type, id) => {
     const result = await responce.json()
 
 
-    if(result){
-        return Object.values(result).length
-    }
-    return 0
+    // if(result){
+    //     return Object.values(result).length
+    // }
+    // return 0
+    console.log(result)
+    return result
 }   

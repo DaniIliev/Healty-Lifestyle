@@ -16,6 +16,7 @@ import CreateUserInfo from './components/user/CreateUserInfo'
 import EditRecipe from './components/recipe/EditRecipe'
 import AuthGuard from './components/guards/AuthGuard'
 import GuestGuard from './components/guards/GuestGuard'
+import EditUserInfo from './components/user/EditUserInfo'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -35,6 +36,7 @@ function App() {
             <Route path = '/recipes/:type/details/:id' element={<DetailsRecipe/>}/>
             <Route path='/recipes/:type/edit/:id' element={<EditRecipe/>}/>
             <Route path='/user/info/:id' element={<UserInfoComponent/>}/>
+            <Route path='/user/info/edit/:userId' element={<EditUserInfo/>}/>
             <Route path='/user/:id/recipes' element={<UserRecipes/>}/>
             <Route path='/user/:id/favorite-recipes' element={<FavoriteRecipes/>}/> 
             <Route path='/user/:id/createDetails' element={<CreateUserInfo/>} />

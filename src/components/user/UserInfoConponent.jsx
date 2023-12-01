@@ -1,38 +1,40 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import * as userService from '../../services/userService'
-import UserFormModal from "./UserFormModal"
+import { Link } from "react-router-dom"
 import calorienCalculation from "../../utils/caloriеCalculation"
+import SpinnerComponent from "../spinner/SpinnerComponent"
+import PieChar from "../pieChar/PieChar"
 
 
 
 export default function UserInfoComponent(){
-    const [showEditUser, setShowEditUser] = useState(false)
     const [calculatedData, setCalculatedData] = useState({})
+    const [isLoading, setIsLoading] = useState(false)
     const [userDetails, setUserDetails] = useState({})
     const navigate = useNavigate()
     const {id} = useParams()
 
 
     useEffect(() => {
+        setIsLoading(true)
         userService.getDetails(id)
             .then(result => {
-                console.log(result)
             if(result == '[]' || result.length == 0){
             navigate(`/user/${id}/createDetails`)
             }else{
                 setUserDetails(result)
                 setCalculatedData(calorienCalculation(result[0]))
             }
+            setIsLoading(false)
             })
     },[id])
 
-
-    const showEditUserForm = () => {
-        setShowEditUser(state => !state)
-    }
     return(
         <>
+            {isLoading && <SpinnerComponent/>}
+
+            {!isLoading && (
                     <div className="userDetailsPage">
                     <h1>Your detailed Information</h1>
                     <p className="attention">Attention! Calculated calories are those calories that a person needs to maintain their weight. If a person aims to increase his weight in a healthy way, he increases his calories by 500, and if he wants to lose weight, he decreases them by 500. The graphs should be taken into account</p>
@@ -44,11 +46,10 @@ export default function UserInfoComponent(){
                             <p><strong>Age:</strong> {userDetails[0]?.age}</p>
                             <p><strong>Kilograms:</strong> {userDetails[0]?.kilograms}</p>
                             <p><strong>Activeness:</strong> {userDetails[0]?.activeness}</p>
-                            <button onClick={showEditUserForm}>Edit</button>
+                            <button><Link to={`/user/info/edit/${id}`}>Edit</Link></button>
                         </div>
             
                         <div>
-                            {/* <h3>calculator</h3> */}
                             <div className='resultdata'>
                                 <table>
                                     <tr>
@@ -64,13 +65,14 @@ export default function UserInfoComponent(){
                                         <td>{calculatedData?.totalCalorien} calories</td>
                                     </tr>
                                 </table>
-                                <img src="/images/macro.png" alt="macro" />
+                                <PieChar />
+                                {/* <img src="/images/macro.png" alt="macro" /> */}
                             </div>
                         </div>
                     </div>
-                        {showEditUser && <UserFormModal {...userDetails} />}
-
                     </div>
+            )}
+
         </>
     )
 }

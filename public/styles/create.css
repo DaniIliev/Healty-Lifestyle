@@ -22,7 +22,7 @@
     align-items: center;
     margin-top: 0.7;
 }
-
+.userCreateDetailsForm .inputField,
 .createPost .formInput, .recypetype,
 .editPost .formInput{
     padding: 1em;

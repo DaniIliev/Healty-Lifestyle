@@ -27,16 +27,16 @@ export default function CreateUserInfo(){
 
     return(
         <div className="userInfo">
-            <div className="text">
+            <div className="textCreateUserDetails">
                 <h2>Enter your information here</h2>
                 <p>After entering the information, our calculator will calculate the calorie expenditure</p>
             </div>
-            <form className="userDetailsForm" onSubmit={onSubmit}>
+            <form className="userCreateDetailsForm" onSubmit={onSubmit}>
             <div className="wrapp">
                  <label htmlFor="username">Username</label>
-                 <input type="text" name="username" onChange={changeHandler} value={values.username}/>
+                 <input className='inputField' type="text" name="username" onChange={changeHandler} value={values.username}/>
             </div>
-            <div className="wrapp">
+            <div className="wrapGen">
                 <label htmlFor="gender">Gender</label>
                 <div className="chekbox">
                     <div>
@@ -51,21 +51,21 @@ export default function CreateUserInfo(){
             </div>
             <div className="wrapp">
                 <label htmlFor="age">Age</label>
-                <input type="number" name="age" id="age" onChange={changeHandler} value={values.age}/>
+                <input type="number" className='inputField' name="age" id="age" onChange={changeHandler} value={values.age}/>
             </div>
             <div className="wrapp">
                 <label htmlFor="hight">Height in centimeter</label>
-                <input type="number" name="hight" id="hight" onChange={changeHandler} value={values.hight}/>
+                <input type="number"className='inputField' name="hight" id="hight" onChange={changeHandler} value={values.hight}/>
             </div>
 
             <div className="wrapp">
                 <label htmlFor="kilos">Kilograms</label>
-                <input type="number" name="kilograms" id="kilograms" onChange={changeHandler} value={values.kilograms}/>
+                <input type="number" className='inputField' name="kilograms" id="kilograms" onChange={changeHandler} value={values.kilograms}/>
             </div>
 
             <div className="wrapp">
                 <label htmlFor="activeness">Activeness</label>
-                <select name="activeness" id="activeness" onChange={changeHandler} value={values.activeness}>
+                <select className='inputField' name="activeness" id="activeness" onChange={changeHandler} value={values.activeness}>
                     <option value="Basal Metabolic Rate">Basal Metabolic Rate</option>
                     <option value="Little or no physical activity">Little or no physical activity</option>
                     <option value="Light exercise (1-3 days a week)">Light exercise (1-3 days a week)</option>

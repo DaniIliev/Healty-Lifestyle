@@ -1,0 +1,66 @@
+.x-box{
+    position: relative;
+    width: 40vh;
+    height: 40vh;
+    border-radius: 50%;
+    background-color: green;
+    background:repeating-conic-gradient(
+    from 0deg,
+    rgb(249, 177, 42) 0deg calc(3.6deg * 35),
+    red calc(3.6deg * 35) calc(3.6deg * 60),
+    rgb(0, 98, 255) calc(3.6deg * 60) calc(3.6deg * 100)
+    );
+}
+
+.first{
+    position: absolute;
+    font-size: 3em;
+    top: 30%;
+    left: 60%;
+}
+
+.second{
+    position: absolute;
+    font-size: 3em;
+    left: 45.5%;
+    top: 70%;
+}
+
+.third{
+    position: absolute;
+    font-size: 3em;
+    left: 15%;
+    top: 35%;
+}
+.first, .second, .third{
+    color: white;
+}
+.x-box-cont{
+    font-size: 1.5em;
+
+}
+.wrap-x-box-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.wrap-x-box-content h1{
+    padding: 0.5em;
+    font-size: 1.5em;
+    width: 30ch;
+}
+.wrapp-x-box{
+    display: flex;
+    justify-content: center;
+    margin-right: 5em;
+    align-items: center;
+}
+
+.x-box-cont{
+    display: flex;
+    gap: 1.2em;
+    justify-content: center;
+    margin-right: 1em;
+    flex-direction: column;
+}

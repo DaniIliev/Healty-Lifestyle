@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RecipeItem from "../recipe/RecipeItem";
 import * as recipeService from "../../services/recipeService";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import SpinnerComponent from "../spinner/SpinnerComponent";
 import { Pagination } from "../pagination/Pagination";
 
@@ -42,6 +42,14 @@ export default function UserRecipes() {
               currentPosts.map((recipe) => (
                 <RecipeItem key={recipe.id} {...recipe} />
               ))}
+            {currentPosts.length == 0 && (
+              <div className="wrappNoContent">
+                  <p className="noRecipesAvailable">No recipes available! :(</p>
+                  <div className="idea-text">
+                      <p><Link to={'/recipes/all'}>Recipe Catalog</Link></p>
+                  </div>
+              </div>
+            )}
           </div>
           <Pagination totalPosts={myRecipes.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
         </div>

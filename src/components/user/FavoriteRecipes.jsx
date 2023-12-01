@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import * as recipeService from '../../services/recipeService'
+import { Link } from "react-router-dom"
 import { AuthContext } from "../../contexts/authContext"
 import RecipeItem from "../recipe/RecipeItem"
 import SpinnerComponent from "../spinner/SpinnerComponent"
@@ -44,9 +45,14 @@ export default function FavoriteRecipes(){
                         currentPosts.map(recipe => <RecipeItem key={recipe.id} {...recipe}/>)
                 )}
 
-                {!favoriteRecipes && (
-                    <h3>I don't have Favorite Recipes :(</h3>
-                )}
+            {currentPosts.length == 0 && (
+              <div className="wrappNoContent">
+                  <p className="noRecipesAvailable">I don't have Favorite Recipes :(</p>
+                  <div className="idea-text">
+                      <p><Link to={'/recipes/all'}>Recipe Catalog</Link></p>
+                  </div>
+              </div>
+            )}
             </div>
             <Pagination totalPosts={favoriteRecipes.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} />
             </div>

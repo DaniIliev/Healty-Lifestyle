@@ -14,7 +14,8 @@ import { deleteRecipe } from "./deleteRecipe";
 export default function DetailsRecipe() {
   const { userId, username } = useContext(AuthContext);
   const { type, id } = useParams();
-  const [likeCount, setLikeCount] = useState(0)
+  const [likes, setLikes] = useState([])
+  const [alreadyLike, setAlreadyLike] = useState({})
   const navigate = useNavigate()
 
   const [recipeDetails, setRecipeDetails] = useState([]);
@@ -34,10 +35,10 @@ export default function DetailsRecipe() {
       .then((data) => {
         if (data.likes) {
           let likeResult = responceDataStructure(data.likes, 'like')
-          setLikeCount(Object.values(data.likes).length)
-          let isLiked = Object.values(data?.likes).filter((id) => id == userId);
+            setLikes(likeResult)
+          let isLiked = Object.values(likeResult).filter((like) => like.likedUserID == userId);
           if (isLiked.length != 0) {
-            console.log(isLiked)
+            setAlreadyLike(isLiked[0])
             setIsAlreadyLiked((state) => !state);
           }
         }
@@ -97,10 +98,13 @@ export default function DetailsRecipe() {
     e.preventDefault();
 
     likeService.like(type, id, userId)
-      .then((responce) => {
+      .then((newLike) => {
+        setAlreadyLike(newLike)
         setIsAlreadyLiked(true)
         likeService.getAll(type,id)
-                .then(res => setLikeCount(res))
+                .then(res => {
+                  setLikes(res)
+                })
       })
       .catch((err) => console.log(err));
   };
@@ -108,11 +112,12 @@ export default function DetailsRecipe() {
   const unLikeHandler = (e) => {
     e.preventDefault();
 
-    likeService.unLike(type, id, userId)
+    likeService.unLike(type, id, alreadyLike.likeId)
       .then(() => {
+        setAlreadyLike({})
         setIsAlreadyLiked(false)
         likeService.getAll(type,id)
-            .then(res => setLikeCount(res))
+            .then(res => setLikes(res))
       })
       .catch((err) => console.log(err));
   };
@@ -206,7 +211,7 @@ export default function DetailsRecipe() {
               <h4>{recipeDetails.recipeType}</h4>
               <h3>{recipeDetails.title}</h3>
               </div>
-              <p><img src="/images/loveCount.png" alt="loveCount" className="loveCount"/>Count: {likeCount != 0 ? likeCount : '0 :('}</p>
+              <p><img src="/images/loveCount.png" alt="loveCount" className="loveCount"/>Count: {Object.keys(likes)?.length != 0 ? Object.keys(likes)?.length : '0 :('}</p>
               </div>
               <p>Cooking time: {recipeDetails.cooking}</p>
               <p>Calorien per 100 grams:{recipeDetails.calorien} cal</p>
@@ -233,25 +238,19 @@ export default function DetailsRecipe() {
                 defaultValue={recipeDetails.preparation}
               />
             </div>
+            <div className="editDeleteButtons">
             {isOwner && (
-              <div className="editDeleteButtons">
+              <>
                 <button>
                   <Link to={`/recipes/${type}/edit/${id}`}>Edit</Link>
                 </button>
                 <button>
                   <Link onClick={deleteRecipeHandler}>Delete</Link>
                 </button>
-                <button>
-                  <Link>Back</Link>
-                </button>
-              </div>
+              </>
             )}
-
-            {!isOwner && (
-              <div className="editDeleteButtons">
                 <button><Link to={'/recipes/all'}>Back</Link></button>
-              </div>
-            )}
+          </div>
           </div>
         </div>
       )}
