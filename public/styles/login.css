@@ -4,3 +4,11 @@
     justify-content: center;
     gap: 1em;
 }
+
+.errorOnLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2em;
+    color: red;
+}

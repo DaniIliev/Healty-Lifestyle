@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as userService from '../services/userService'
 import { useLocalStorage } from "../hooks/useLocalStorage";
-
+import * as inputValidation from '../utils/inputValidation'
 export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
@@ -11,12 +11,13 @@ export const AuthProvider = ({children}) => {
 
     const onRegisterSubmit = async (values) => {
         const {rePassword, ...registerData} = values
-
-        if(rePassword !== registerData.password){
-            return alert('Password don\'t match!');
-        }
-
+        registerData.rePassword = rePassword
         try{
+            const errors = inputValidation.register_loginFormValidation(registerData)
+            if(Object.values(errors).length > 0){
+
+                return {errors: {...errors}}
+            }
             const result = await userService.register(registerData)
             setAuth({email:result.email, localId: result.localId})
             navigate('/')
@@ -30,7 +31,7 @@ export const AuthProvider = ({children}) => {
         try{
             const result = await userService.login(values)
             if(result.error){
-                return alert('Email or password don\'t match!')
+                return {errors: {type: 'Email or password don\'t match!'}}
             }
             setAuth({email:result.email, localId: result.localId})
             navigate('/')

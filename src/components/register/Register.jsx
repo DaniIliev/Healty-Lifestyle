@@ -11,8 +11,7 @@ const initialFormValues = {
 export default function Register(){
     const {onRegisterSubmit} = useContext(AuthContext) 
     const {values, changeHandler, onSubmit} = useForm(initialFormValues, onRegisterSubmit)
-
-
+    
     return(
         <div className="wrapper">
             <img src="/images/fruit.png" alt="fruit" className="fon"/>
@@ -26,14 +25,16 @@ export default function Register(){
         <form className="registerForm" onSubmit={onSubmit}>
             <div className="inputWrapper">
                 <label htmlFor="email">Email</label>
+                {values?.errors?.email && <p className="error">{values?.errors?.email}</p>}
                 <div>
                     <img src="/images/icons/at-solid.svg"/>
-                    <input type="text" name="email" placeholder= "Type your email" value={values.email} onChange={changeHandler}/>
+                    <input type="text" name="email" placeholder= "Type your email" value={values.email} onChange={changeHandler} />
                 </div>
             </div>
 
             <div className="inputWrapper">
                 <label htmlFor="email">Password</label>
+                {values?.errors?.password && <p className="error">{values?.errors?.password}</p>}
                 <div>
                     <img src="/images/icons/lock-solid.svg" alt="lock" />
                     <input type="password" name="password" placeholder="Type your password" value={values.password} onChange={changeHandler} />    
@@ -43,6 +44,7 @@ export default function Register(){
             
             <div className="inputWrapper">
                 <label htmlFor="email">Repeat password</label>
+                {values?.errors?.rePassword && <p className="error">{values?.errors?.rePassword}</p>}
                 <div>
                     <img src="/images/icons/lock-solid.svg" alt="lock" />
                     <input type="password" name="rePassword" placeholder="Repeat your password" value={values.rePassword} onChange={changeHandler}/> 
@@ -60,4 +62,4 @@ export default function Register(){
 
 
     )
-}
+    }

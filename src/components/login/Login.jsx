@@ -16,6 +16,7 @@ export default function Login(){
         <div className="wrapper">
         <img src="/images/fruit.png" alt="fruit" className="fon"/>
     <div className="register">
+    {values?.errors?.type && <p className="errorOnLogin">{values?.errors?.type}</p>}
         <div className="titleLog">
             <div className="userIcon">
                 <img src="/images/icons/user-solid.svg" alt="user" />

@@ -112,3 +112,8 @@ position: relative;
    70% { -webkit-transform: scale(1);
          transform: scale(1);}
 }
+
+.error{
+    color: red;
+    font-size: 0.8em;
+}
