@@ -9,12 +9,14 @@ import { responceDataStructure } from "../../utils/structureData";
 import { Link } from "react-router-dom";
 import SpinnerComponent from "../spinner/SpinnerComponent";
 import { deleteRecipe } from "./deleteRecipe";
+import PreparationMethod from "./PreparationMethod";
 
 
 export default function DetailsRecipe() {
   const { userId, username } = useContext(AuthContext);
   const { type, id } = useParams();
   const [likes, setLikes] = useState([])
+  const [showMetod, setShowMetod] = useState(false)
   const [alreadyLike, setAlreadyLike] = useState({})
   const navigate = useNavigate()
 
@@ -126,7 +128,13 @@ export default function DetailsRecipe() {
     e.preventDefault()
     deleteRecipe(type,id, recipeDetails.title, navigate)
   }
+  const showMetodHandler = () => {
+    setShowMetod(true)
+  }
 
+  const hideMetod = () => {
+    setShowMetod(false)
+  }
   const isOwner = recipeDetails.ownerId == userId ? true : false;
 
   return (
@@ -134,7 +142,7 @@ export default function DetailsRecipe() {
       {isLoading && <SpinnerComponent />}
 
       {!isLoading && (
-        <div className="detailsPage">
+        <div className="detailsPage" id="blur">
           <h1 className="detailsTitle">Detailed recipe information</h1>
           <div className="wrappDetails">
             <div className="wrappImgIcon">
@@ -224,19 +232,20 @@ export default function DetailsRecipe() {
                 </tr>
                 <tr>
                   <td>{recipeDetails.protein} grams</td>
-                  <td>{recipeService.fat} grams</td>
+                  <td>{recipeDetails.fat} grams</td>
                   <td>{recipeDetails.carbs} grams</td>
                   <td>{recipeDetails.sugar} grams</td>
                 </tr>
               </table>
-              <label htmlFor="preparation">Metod of preparation</label>
-              <textarea
+              {/* <label htmlFor="preparation">Metod of preparation</label> */}
+              <button className="showMetodOfPreparation" onClick={showMetodHandler}>Show metod of preparation</button>
+              {/* <textarea
                 className="formInput"
                 type="text"
                 id="text"
                 name="preparation"
                 defaultValue={recipeDetails.preparation}
-              />
+              /> */}
             </div>
             <div className="editDeleteButtons">
             {isOwner && (
@@ -254,6 +263,7 @@ export default function DetailsRecipe() {
           </div>
         </div>
       )}
+              {showMetod && <PreparationMethod metod = {recipeDetails.preparation} hide={hideMetod}/>}
     </>
   );
 }

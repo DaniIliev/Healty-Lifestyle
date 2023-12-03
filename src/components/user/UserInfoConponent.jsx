@@ -65,8 +65,11 @@ export default function UserInfoComponent(){
                                         <td>{calculatedData?.totalCalorien} calories</td>
                                     </tr>
                                 </table>
+                                <div className="wrappPieCharImg">
                                 <PieChar />
-                                {/* <img src="/images/macro.png" alt="macro" /> */}
+                                <img src="/images/healtyLifestyle.png" alt="image" />
+                                </div>
+                             
                             </div>
                         </div>
                     </div>

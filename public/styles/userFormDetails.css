@@ -1,5 +1,8 @@
 .userDetailsPage{
     position: relative;
+    /* background-image: url('../images/backgroun-user-info.png');
+    background-repeat: no-repeat;
+    background-size: cover; */
 }
 
 .userDetailsForm{
@@ -109,3 +112,15 @@
     margin-bottom: 1em;
 }
 
+
+.wrappPieCharImg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrappPieCharImg img {
+    width: 20em;
+    height: 20em;
+    margin-top: 4em;
+}

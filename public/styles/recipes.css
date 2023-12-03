@@ -179,3 +179,8 @@ h2{
     flex-direction: column;
     gap: 2em;
 }
+
+#blur.active{
+    filter: blur(10px);
+    transition: 0.5s;
+}

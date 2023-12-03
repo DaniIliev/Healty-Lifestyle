@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import * as recipeService from '../../services/recipeService'
 import { recipeType } from "../../utils/structureData"
 import {AuthContext} from '../../contexts/authContext'
@@ -25,8 +25,20 @@ export default function CreatePost({
 }){
     const {userId} = useContext(AuthContext)
     const [errors, setErrors] = useState([]) 
-    const onCreateHandler = () => {
 
+    useEffect(() => {
+
+       let blur =  document.querySelector('#blur')
+        blur.classList.add('active')
+        return () => {
+        blur.classList.remove('active')
+            
+        }
+    },[])
+
+
+
+    const onCreateHandler = () => {
         let type = recipeType(values)
         const errorsArray = createRecipeFormValidation(values)
 
@@ -54,7 +66,6 @@ export default function CreatePost({
 
     const {values, changeHandler, onSubmit} = useForm(initialFormValues, onCreateHandler)
     const domNode = useClickOutside(hide)
-
 
 
     return(

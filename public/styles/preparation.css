@@ -1,0 +1,15 @@
+.preparationMethod{
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    /* background-color: white; */
+    backdrop-filter: blur(10px);
+    background-color: white;
+    border-radius: 16px;
+    width: 50%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

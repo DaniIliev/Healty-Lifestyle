@@ -47,12 +47,13 @@ export default function useForm(initialValue, onSubmitHahdler){
         e.preventDefault() 
         const result = await onSubmitHahdler(values)
         if(result?.errors){
+            console.log(result.errors)
             return setValues(state => ({
                 ...state,
                 errors: {...result.errors}
             }))
         }
-        if(result.name){
+    if(result?.name){
             setValues(initialValue)
         }
     }

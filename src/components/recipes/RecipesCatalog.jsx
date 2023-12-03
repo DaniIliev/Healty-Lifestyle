@@ -52,7 +52,7 @@ export default function RecipesCatalog(){
         {loading == true ? 
                 <SpinnerComponent/>
                         :
-        <div className="catalog">
+        <div className="catalog" id="blur">
             <div className="content">
             <h3>Are you out of healthy food ideas? Here you can find many and varied recipes</h3>
             {isAuthenticated && (
@@ -60,7 +60,7 @@ export default function RecipesCatalog(){
                          <img src="/images/chef.png" alt="chef" />
                          <div className="idea-text">
                          <h4>You have an idea that you want to share with our team?</h4>
-                         <p><Link onClick={onCreateHandleClick}>Click here to create recipe!</Link></p>
+                         <p><Link onClick={onCreateHandleClick} id="open-popup">Click here to create recipe!</Link></p>
                          </div>
                      </div>
             )}
@@ -74,16 +74,15 @@ export default function RecipesCatalog(){
                 </div> 
             )}
             </div>
-            {showCreateModal && <CreatePost hide={hideModal} setRecipes={setRecipes}/>}
             <img src="/images/filter.png" alt="filter" className="filter"/>
             <div className="cardsWrapper">
                 {currentPosts.map(recipe => <RecipeItem key={recipe.id} {...recipe}/>)}
             </div>
             <Pagination totalPosts={recipes.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage} /> 
         </div>
+        
         }
+            {showCreateModal && <CreatePost hide={hideModal} setRecipes={setRecipes}/>}
         </>
-
-
     )
 }
