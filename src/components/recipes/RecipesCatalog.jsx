@@ -7,6 +7,7 @@ import { responceDataStructure } from "../../utils/structureData"
 import SpinnerComponent from "../spinner/SpinnerComponent"
 import { Pagination } from "../pagination/Pagination"
 import { AuthContext } from "../../contexts/authContext"
+import FilterComponent from "../filter/FilterComponent"
 
 export default function RecipesCatalog(){
     const {isAuthenticated} = useContext(AuthContext)
@@ -14,6 +15,7 @@ export default function RecipesCatalog(){
     const [recipes, setRecipes] = useState([])
     const [showCreateModal, setShowCreateModal] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [showFilter, setShowFilter] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [postsPerPage, setPostsPerPage] = useState(8)
 
@@ -41,6 +43,10 @@ export default function RecipesCatalog(){
             navigate('/user/login')
             setShowCreateModal(false)
         }
+    }
+
+    const recipeFilter = (filteredRecipes) => {
+        setRecipes(filteredRecipes)
     }
 
     const lastPostIndex = currentPage * postsPerPage;
@@ -74,7 +80,10 @@ export default function RecipesCatalog(){
                 </div> 
             )}
             </div>
-            <img src="/images/filter.png" alt="filter" className="filter"/>
+            <div className="filter">
+            <img src="/images/filter.png" alt="filter" className="filterImg"/>
+            {<FilterComponent filter={recipeFilter} />}
+            </div>
             <div className="cardsWrapper">
                 {currentPosts.map(recipe => <RecipeItem key={recipe.id} {...recipe}/>)}
             </div>

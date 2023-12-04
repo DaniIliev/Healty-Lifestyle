@@ -53,7 +53,8 @@ export default function useForm(initialValue, onSubmitHahdler){
                 errors: {...result.errors}
             }))
         }
-    if(result?.name){
+        
+        if(result?.name){
             setValues(initialValue)
         }
     }

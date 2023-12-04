@@ -82,3 +82,31 @@ export const patch = async(type, id, data) => {
         body: JSON.stringify(data)
     })
 }
+
+// filter Recipe
+
+
+    export const filter = async (type, criterium) => {
+        console.log(criterium)
+        let responce;
+        if(type == 'all'){
+            responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/recipes.json`)
+        }else{
+            responce = await fetch(`https://react-demo-a5b29-default-rtdb.firebaseio.com/recipes/${type}.json`)
+        }
+        const data = await responce.json()
+
+        const result = responceDataStructure(data, type)
+
+        if(criterium == 'Foods with the least amount of calories'){
+            result.sort((a,b) => a.calorien - b.calorien)
+        }else if(criterium == 'Foods with the highest calorie content'){
+            result.sort((a,b) => b.calorien - a.calorien)
+        }else if(criterium == 'The fastest cooking foods'){
+            result.sort((a,b) => a.cooking - b.cooking)
+        }else if(criterium == 'Foods that require more time to prepare'){
+            result.sort((a,b) => b.cooking - a.cooking)
+        }
+
+        return result
+    }

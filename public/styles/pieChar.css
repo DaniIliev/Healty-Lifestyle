@@ -1,7 +1,7 @@
 .x-box{
     position: relative;
-    width: 40vh;
-    height: 40vh;
+    width: 30vh;
+    height: 30vh;
     border-radius: 50%;
     background-color: green;
     background:repeating-conic-gradient(
@@ -14,21 +14,21 @@
 
 .first{
     position: absolute;
-    font-size: 3em;
+    font-size: 2.5em;
     top: 30%;
     left: 60%;
 }
 
 .second{
     position: absolute;
-    font-size: 3em;
-    left: 45.5%;
+    font-size: 2.5em;
+    left: 44%;
     top: 70%;
 }
 
 .third{
     position: absolute;
-    font-size: 3em;
+    font-size: 2.5em;
     left: 15%;
     top: 35%;
 }
@@ -45,7 +45,7 @@
     align-items: center;
     justify-content: center;
 }
-.wrap-x-box-content h1{
+.wrappPieCharImg h1{
     padding: 0.5em;
     font-size: 1.5em;
     width: 30ch;
@@ -53,7 +53,6 @@
 .wrapp-x-box{
     display: flex;
     justify-content: center;
-    margin-right: 5em;
     align-items: center;
 }
 
@@ -63,4 +62,17 @@
     justify-content: center;
     margin-right: 1em;
     flex-direction: column;
+}
+.wrappPieCharImg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrappPieCharImgdiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
 }

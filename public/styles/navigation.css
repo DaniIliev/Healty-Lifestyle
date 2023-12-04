@@ -53,7 +53,7 @@
     margin: 0.2em;
     /* text-align: center; */
 }
-
+.recipesDropDown li:hover,
 .userDropDown li:hover{
     background-color: #ffca91;
 }

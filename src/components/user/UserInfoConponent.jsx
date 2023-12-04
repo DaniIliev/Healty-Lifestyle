@@ -66,8 +66,11 @@ export default function UserInfoComponent(){
                                     </tr>
                                 </table>
                                 <div className="wrappPieCharImg">
-                                <PieChar />
-                                <img src="/images/healtyLifestyle.png" alt="image" />
+                                <h1>Distribution of calories needed to maintain your weight</h1>
+                                <div className="wrappPieCharImgdiv">
+                                    <PieChar />
+                                    <img src="/images/healtyLifestyle.png" alt="image" />
+                                </div>
                                 </div>
                              
                             </div>

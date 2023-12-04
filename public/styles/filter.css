@@ -1,0 +1,31 @@
+.filterContent{
+    position: absolute;
+    left: 150%;
+    top: 0;
+}
+
+.filterForm {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1em;
+}
+
+.filterBtn{
+    padding: 0.2em 0.5em;
+    background-color: red;
+    border-radius: 16px;
+    border: 1px solid black;
+    color: white;
+}
+.filterBtn a {
+    color: white;
+    text-decoration: none;
+}
+.filterBtn:hover{
+    background-color: brown;
+}
+#criteria{
+    padding: 0.3em 0.5em;
+    border-radius: 16px;
+}

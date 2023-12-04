@@ -163,9 +163,10 @@ h2{
     margin: 0 auto;
 }
 
-.catalog .filter{
+.filter{
     width: 3em;
-    margin: 0.5em 3em;
+    margin: 0.5em 2em;
+    position: relative;
 }
 
 .noRecipesAvailable{
