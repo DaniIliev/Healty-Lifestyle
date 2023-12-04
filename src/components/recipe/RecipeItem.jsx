@@ -5,6 +5,7 @@ export default function RecipeItem({
     recipeType,
     calorien,
     imageUrl,
+    cooking,
 }){
 
     return(
@@ -17,6 +18,7 @@ export default function RecipeItem({
                         <h4>{recipeType}</h4>
                         <h3>{title}</h3>
                         <p>Calorien per 100 grams: {calorien} cal</p>
+                        <p className="durationP"><img src="/images/duration.png" alt="duration" className="duration"/>{cooking} min</p>
                         <div className="info">
                             <p>{'>>>'}</p>
                              <img src="/images/icons/info.svg" alt="info"/>

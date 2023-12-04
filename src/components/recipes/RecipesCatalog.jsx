@@ -17,11 +17,17 @@ export default function RecipesCatalog(){
     const [loading, setLoading] = useState(false)
     const [showFilter, setShowFilter] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
-    const [postsPerPage, setPostsPerPage] = useState(8)
+    const [postsPerPage, setPostsPerPage] = useState(0)
 
     const {type} = useParams()
 
+
     useEffect(() => {
+        if(type == 'all'){
+            setPostsPerPage(8)
+        }else{
+            setPostsPerPage(4)
+        }
         setLoading(true)
         recipeService.getRecipes(type)
                 .then(responce => {

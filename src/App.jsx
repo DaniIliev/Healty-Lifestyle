@@ -17,6 +17,7 @@ import EditRecipe from './components/recipe/EditRecipe'
 import AuthGuard from './components/guards/AuthGuard'
 import GuestGuard from './components/guards/GuestGuard'
 import EditUserInfo from './components/user/EditUserInfo'
+import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,34 +25,34 @@ function App() {
   
   return (
 <>  
-<AuthProvider>
+<ErrorBoundary>
+      <AuthProvider>
+            <div className="main">
+                  <Header/>
+                  <Routes>
+                        <Route path='/' element={<Home/>}/>
+                        <Route element={<AuthGuard/>}>
+                              <Route path='/create' element={<CreatePost/>}/>
+                              <Route path = '/recipes/:type/details/:id' element={<DetailsRecipe/>}/>
+                              <Route path='/recipes/:type/edit/:id' element={<EditRecipe/>}/>
+                              <Route path='/user/info/:id' element={<UserInfoComponent/>}/>
+                              <Route path='/user/info/edit/:userId' element={<EditUserInfo/>}/>
+                              <Route path='/user/:id/recipes' element={<UserRecipes/>}/>
+                              <Route path='/user/:id/favorite-recipes' element={<FavoriteRecipes/>}/> 
+                              <Route path='/user/:id/createDetails' element={<CreateUserInfo/>} />
+                        </Route> 
 
-<div className="main">
-<Header/>
+                        <Route element={<GuestGuard/>}>
+                              <Route path='/user/register' element={<Register/>}/> 
+                              <Route path='/user/login' element={<Login/>}/> 
+                        </Route>
+                        <Route path='/recipes/:type' element={<RecipesCatalog/>}/>
+                  </Routes>
+                  <Footer/>
+            </div>
+      </AuthProvider>
+</ErrorBoundary>
 
-<Routes>
-      <Route path='/' element={<Home/>}/>
-      <Route element={<AuthGuard/>}>
-            <Route path='/create' element={<CreatePost/>}/>
-            <Route path = '/recipes/:type/details/:id' element={<DetailsRecipe/>}/>
-            <Route path='/recipes/:type/edit/:id' element={<EditRecipe/>}/>
-            <Route path='/user/info/:id' element={<UserInfoComponent/>}/>
-            <Route path='/user/info/edit/:userId' element={<EditUserInfo/>}/>
-            <Route path='/user/:id/recipes' element={<UserRecipes/>}/>
-            <Route path='/user/:id/favorite-recipes' element={<FavoriteRecipes/>}/> 
-            <Route path='/user/:id/createDetails' element={<CreateUserInfo/>} />
-      </Route> 
-
-      <Route element={<GuestGuard/>}>
-            <Route path='/user/register' element={<Register/>}/> 
-            <Route path='/user/login' element={<Login/>}/> 
-      </Route>
-      <Route path='/recipes/:type' element={<RecipesCatalog/>}/>
-</Routes>
-
-<Footer/>
-</div>
-</AuthProvider>
 </>
   )
 }

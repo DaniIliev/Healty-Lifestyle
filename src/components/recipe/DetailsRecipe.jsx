@@ -222,7 +222,7 @@ export default function DetailsRecipe() {
               <p><img src="/images/loveCount.png" alt="loveCount" className="loveCount"/>Count: {Object.keys(likes)?.length != 0 ? Object.keys(likes)?.length : '0 :('}</p>
               </div>
               <p>Cooking time: {recipeDetails.cooking}</p>
-              <p>Calorien per 100 grams:{recipeDetails.calorien} cal</p>
+              <p>Calorien per 100 grams: {recipeDetails.calorien} cal</p>
               <table className="table" name="table">
                 <tr>
                   <th>Protein</th>
@@ -237,15 +237,7 @@ export default function DetailsRecipe() {
                   <td>{recipeDetails.sugar} grams</td>
                 </tr>
               </table>
-              {/* <label htmlFor="preparation">Metod of preparation</label> */}
               <button className="showMetodOfPreparation" onClick={showMetodHandler}>Show metod of preparation</button>
-              {/* <textarea
-                className="formInput"
-                type="text"
-                id="text"
-                name="preparation"
-                defaultValue={recipeDetails.preparation}
-              /> */}
             </div>
             <div className="editDeleteButtons">
             {isOwner && (

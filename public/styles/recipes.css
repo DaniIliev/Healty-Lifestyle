@@ -185,3 +185,16 @@ h2{
     filter: blur(10px);
     transition: 0.5s;
 }
+
+.card-text .duration {
+    width: 2.5em;
+    height: 2.5em;
+}
+
+.card-text .durationP {
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+}
