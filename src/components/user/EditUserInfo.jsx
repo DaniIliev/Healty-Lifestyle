@@ -3,6 +3,7 @@ import * as userService from '../../services/userService'
 import { valueInput } from "../../utils/valueInput"
 import { useState, useEffect} from "react"
 import { userInfoFormValidation } from "../../utils/inputValidation"
+import SpinnerComponent from "../spinner/SpinnerComponent"
 
 
 const initialFormValues = {
@@ -19,21 +20,23 @@ export default function EditUserInfo(){
     const [values, setValues] = useState(initialFormValues)
     const {userId} = useParams()
     const [errors, setErrors] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
     const [id, setId] = useState()
 
     useEffect(() => {
+        setIsLoading(true)
         userService.getDetails(userId)
                 .then(data => {
                     setId(data[0].id)
                     setValues(data[0])
+                    setIsLoading(false)
                 })
     }, [userId])
 
 
     const onSubmitHandler = (e) => {
         e.preventDefault()
-        console.log(typeof values.age)
         const error = userInfoFormValidation(values)
         if(Object.values(error)?.length > 0){
             return setErrors(error)
@@ -67,6 +70,9 @@ export default function EditUserInfo(){
 
 
     return(
+<>
+    {isLoading && <SpinnerComponent/> }
+        {!isLoading && (
         <div className="userInfo">
         <div className="textCreateUserDetails">
             <h2>Edit your information here</h2>
@@ -121,9 +127,14 @@ export default function EditUserInfo(){
                 <option value="Very heavy exercise (twice a day)">Very heavy exercise (twice a day)</option>
             </select>
         </div>
-        <button type="submit">Edit</button>
-        <button><Link to={'/'}>Back</Link></button>
+        <div className="buttons" style={{marginTop: '1.5em'}}>
+            <button><Link to={'/'}>Back</Link></button>
+            <button type="submit">Edit</button>
+        </div>
     </form>
     </div>
+        )}
+</>
+        
     )
 }

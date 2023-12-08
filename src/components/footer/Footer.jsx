@@ -7,11 +7,11 @@ export default function Footer(){
         <footer className="footer">
             <div className="footerWrapp">
             <div className="healtyLifestyleFooter">
-                <img src="/images/logo.png" alt="logo" className="logo"/>
+                <Link to={'/'}><img src="/images/logo.png" alt="logo" className="logo"/></Link>
                 <nav className="site-navigation-footer">
                         <ul>
                             <li><Link to='/'>HOME</Link></li>
-                            <li><Link to='recipes'>RECIPES</Link></li>
+                            <li><Link to='/recipes/all'>RECIPES</Link></li>
                             <li><Link to='/user/login'>LOGIN</Link></li>
                             <li><Link to='/user/register'>SIGN UP</Link></li>
                         </ul>

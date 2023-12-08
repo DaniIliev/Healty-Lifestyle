@@ -202,9 +202,7 @@ const changeHandler = (e) => {
           </div>
 
           <div className="buttons">
-            <p>
-              <Link to={`/recipes/${type}/details/${id}`}>Back</Link>
-            </p>
+            <button><Link to={`/recipes/${type}/details/${id}`}>Back</Link></button>
             <button type="submit">Edit</button>
           </div>
         </form>

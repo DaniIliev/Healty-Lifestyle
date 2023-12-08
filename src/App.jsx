@@ -20,11 +20,8 @@ import EditUserInfo from './components/user/EditUserInfo'
 import ErrorBoundary from './components/ErrorBoundary'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   
   return (
-<>  
 <ErrorBoundary>
       <AuthProvider>
             <div className="main">
@@ -52,8 +49,6 @@ function App() {
             </div>
       </AuthProvider>
 </ErrorBoundary>
-
-</>
   )
 }
 
