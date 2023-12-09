@@ -52,6 +52,7 @@ export default function UserInfoComponent(){
                         <div>
                             <div className='resultdata'>
                                 <table>
+                                    <tbody>
                                     <tr>
                                         <th>Protein</th>
                                         <th>Fat</th>
@@ -64,6 +65,7 @@ export default function UserInfoComponent(){
                                         <td>{calculatedData?.carbs} grams</td>
                                         <td>{calculatedData?.totalCalorien} calories</td>
                                     </tr>
+                                    </tbody>
                                 </table>
                                 <div className="wrappPieCharImg">
                                 <h1>Distribution of calories needed to maintain your weight</h1>

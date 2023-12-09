@@ -224,6 +224,7 @@ export default function DetailsRecipe() {
               <p>Cooking time: {recipeDetails.cooking}</p>
               <p>Calorien per 100 grams: {recipeDetails.calorien} cal</p>
               <table className="table" name="table">
+                <tbody>
                 <tr>
                   <th>Protein</th>
                   <th>Fat</th>
@@ -236,6 +237,7 @@ export default function DetailsRecipe() {
                   <td>{recipeDetails.carbs} grams</td>
                   <td>{recipeDetails.sugar} grams</td>
                 </tr>
+                </tbody>
               </table>
               <button className="showMetodOfPreparation" onClick={showMetodHandler}>Show metod of preparation</button>
             </div>
