@@ -57,6 +57,14 @@ create user details,\
 creating likes and comments,\
 caloric expenditure calculation,\
 
+<a name="features"/>
+
+- CRUD operations for recipes
+- Uploading multiple images as files
+- Client-side validations
+- Client-side search
+- Client-side pagination
+
 ## 📷 Screenshots
 <a name="screenshots"/>
 
