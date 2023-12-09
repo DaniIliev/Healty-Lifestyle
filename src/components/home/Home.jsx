@@ -63,7 +63,7 @@ export default function Home(){
                     </div>
                 </div>
 
-                <div className="toBeDefined">
+                <div className="advantage">
                     <h3>04</h3>
                     <div className="textContent">
                     <h4>
