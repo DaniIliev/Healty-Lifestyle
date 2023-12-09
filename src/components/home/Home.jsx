@@ -19,7 +19,7 @@ export default function Home(){
                         <p>
                             <Link to='/recipes/all'>Begint Your Colinary Journey</Link>
                             {/* <img src="/images/icons/computer-mouse.svg" alt="mouse" /> */}
-                            <img src="/images/icons/plus.png" alt="" />
+                            <img src="/images/icons/plus.png" alt="plus" />
                         </p>
 
                     </div>
@@ -63,7 +63,7 @@ export default function Home(){
                     </div>
                 </div>
 
-                <div className="advantage">
+                <div className="toBeDefined">
                     <h3>04</h3>
                     <div className="textContent">
                     <h4>
